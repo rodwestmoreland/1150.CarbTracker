@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbTracker.WebAPI", "CarbTracker.WebAPI\CarbTracker.WebAPI.csproj", "{E700AA3D-0599-45B5-8EEE-D26C6BCD388D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbTracker.Data", "CarbTracker.Data\CarbTracker.Data.csproj", "{4FC0ECCC-CD7F-4FA6-8E05-53465D9EED33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbTracker.Services", "CarbTracker.Services\CarbTracker.Services.csproj", "{B6782386-2938-44A1-9AD6-489680505062}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbTracker.Models", "CarbTracker.Models\CarbTracker.Models.csproj", "{3301A2B3-F653-4BF0-AFC4-0723DB187961}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbTracker.XUnitTesting", "CarbTracker.XUnitTesting\CarbTracker.XUnitTesting.csproj", "{4499CE42-9EA0-45C2-B980-521BB055E7FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E700AA3D-0599-45B5-8EEE-D26C6BCD388D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E700AA3D-0599-45B5-8EEE-D26C6BCD388D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E700AA3D-0599-45B5-8EEE-D26C6BCD388D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E700AA3D-0599-45B5-8EEE-D26C6BCD388D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FC0ECCC-CD7F-4FA6-8E05-53465D9EED33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FC0ECCC-CD7F-4FA6-8E05-53465D9EED33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FC0ECCC-CD7F-4FA6-8E05-53465D9EED33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FC0ECCC-CD7F-4FA6-8E05-53465D9EED33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6782386-2938-44A1-9AD6-489680505062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6782386-2938-44A1-9AD6-489680505062}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6782386-2938-44A1-9AD6-489680505062}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6782386-2938-44A1-9AD6-489680505062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3301A2B3-F653-4BF0-AFC4-0723DB187961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3301A2B3-F653-4BF0-AFC4-0723DB187961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3301A2B3-F653-4BF0-AFC4-0723DB187961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3301A2B3-F653-4BF0-AFC4-0723DB187961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4499CE42-9EA0-45C2-B980-521BB055E7FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4499CE42-9EA0-45C2-B980-521BB055E7FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4499CE42-9EA0-45C2-B980-521BB055E7FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4499CE42-9EA0-45C2-B980-521BB055E7FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF360716-8EE1-4A2E-A986-F9338FE48AC3}
+	EndGlobalSection
+EndGlobal
