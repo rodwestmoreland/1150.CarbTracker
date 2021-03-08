@@ -21,5 +21,8 @@ namespace CarbTracker.Data
         public int CurrentWeight { get; set; }
         [Required]
         public DateTimeOffset CreatedAt { get; set; }
+    
+        public virtual UserTable UserTable { get; set; }
     }
+    
 }
