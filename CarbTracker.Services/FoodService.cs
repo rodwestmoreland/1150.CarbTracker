@@ -28,5 +28,21 @@ namespace CarbTracker.Services
                 return query.ToArray();
             }
         }
+        public bool CreateFood(FoodCreate model)
+        {
+            var entity =
+                new Food()
+                {
+                    Name = model.Name,
+                    Carbs = model.Carbs,
+                    ServingInOunces = model.ServingInOunces,
+                    Description = model.Description
+                };
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Foods.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
