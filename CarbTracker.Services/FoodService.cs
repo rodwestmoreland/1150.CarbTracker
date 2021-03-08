@@ -22,7 +22,6 @@ namespace CarbTracker.Services
                                     Description = e.Description,
                                     ServingInOunces = e.ServingInOunces,
                                     Carbs = e.Carbs
-
                                 }
                             ) ;
 
