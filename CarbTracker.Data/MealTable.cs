@@ -17,7 +17,6 @@ namespace CarbTracker.Data
         [Required]
         public string MealName { get; set; }
         public int TotalCarbs { get; set; }
-
         public virtual UserTable UserTable { get; set; }
 
     }
