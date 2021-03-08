@@ -13,7 +13,7 @@ namespace CarbTracker.Data
         [Key]
         public int MealId { get; set; }
         [ForeignKey(nameof(UserTable))]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         [Required]
         public string MealName { get; set; }
         public int TotalCarbs { get; set; }

@@ -10,13 +10,15 @@ namespace CarbTracker.Data
     public class UserTable
     {
         [Key]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         [Required]
         public string LastName { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
         public string Password { get; set; }
+        [Required]
+        public DateTimeOffset CreatedAt { get; set; }
 
     }
 }

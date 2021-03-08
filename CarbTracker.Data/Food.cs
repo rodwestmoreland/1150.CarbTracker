@@ -12,7 +12,7 @@ namespace CarbTracker.Data
         [Key]
         public int FoodId { get; set; }
         [Required]
-        public string FoodName { get; set; }
+        public string Name { get; set; }
         public int Carbs { get; set; }
     }
 }
