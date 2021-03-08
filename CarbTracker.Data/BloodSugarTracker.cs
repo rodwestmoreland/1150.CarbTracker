@@ -18,8 +18,6 @@ namespace CarbTracker.Data
         public int BSLevel { get; set; }
         [Required]
         public int CarbsConsumed { get; set; }
-        public int InsulinToCarbRatio { get; set; }
-        public int CorrectionFactor { get; set; }
         public int CurrentWeight { get; set; }
         [Required]
         public DateTimeOffset CreatedAt { get; set; }
