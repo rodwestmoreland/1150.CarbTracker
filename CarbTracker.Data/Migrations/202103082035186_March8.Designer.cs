@@ -7,13 +7,13 @@ namespace CarbTracker.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitCreate : IMigrationMetadata
+    public sealed partial class March8 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(March8));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103081841022_InitCreate"; }
+            get { return "202103082035186_March8"; }
         }
         
         string IMigrationMetadata.Source
