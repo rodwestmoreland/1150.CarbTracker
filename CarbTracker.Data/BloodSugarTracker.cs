@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,8 @@ namespace CarbTracker.Data
     {
         [Key]
         public int BSLevelId { get; set; }
-        [Required]
-        public int UserId { get; set; }
+        [ForeignKey(nameof(UserTable))]
+        public Guid UserId { get; set; }
         [Required]
         public int BSLevel { get; set; }
         [Required]
