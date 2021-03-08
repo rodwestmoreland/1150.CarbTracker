@@ -20,9 +20,9 @@ namespace CarbTracker.Data
 
         }
 
-        public Food(string foodName, int carbs)
+        public Food(string name, int carbs)
         {
-            FoodName = foodName;
+            Name = name;
             Carbs = carbs;
         }
 
