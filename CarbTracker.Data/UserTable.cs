@@ -16,6 +16,10 @@ namespace CarbTracker.Data
         [Required]
         public string FirstName { get; set; }
         [Required]
+        public double InsulinToCarbRatio { get; set; }
+        [Required]
+        public double CorrectionFactor { get; set; }
+        [Required]
         public string Password { get; set; }
         [Required]
         public DateTimeOffset CreatedAt { get; set; }
