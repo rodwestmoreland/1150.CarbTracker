@@ -1,5 +1,6 @@
 ﻿using CarbTracker.Models;
 using CarbTracker.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,10 +32,10 @@ namespace CarbTracker.WebAPI.Controllers
 
             return Ok();
         }
-
         private MealService CreateMealService()
         {
-            var mealService = new MealService();
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var mealService = new MealService(userId);
             return mealService;
         }
     }

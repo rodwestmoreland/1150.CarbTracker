@@ -10,6 +10,11 @@ namespace CarbTracker.Services
 {
     public class MealService
     {
+        private readonly Guid _userId;
+        public MealService(Guid userId)
+        {
+            _userId = userId;
+        }
         public IEnumerable<MealTableListItem> GetMeal()
         {
 
@@ -20,7 +25,8 @@ namespace CarbTracker.Services
                                 {
                                     MealId = e.MealId,
                                     MealName = e.MealName,
-                                    TotalCarbs = e.TotalCarbs
+                                    TotalCarbs = e.TotalCarbs,
+                                    UserId = _userId
                                 }
                             );
 
@@ -30,10 +36,14 @@ namespace CarbTracker.Services
 
         public bool CreateMeal(MealTableCreate model)
         {
+            
             var entity = new MealTable()
             {
-                MealName = model.MealName
+                MealName = model.MealName,
+                TotalCarbs = model.TotalCarbs,
+                UserId = _userId
             };
+
             using (var context = new ApplicationDbContext())
             {
                 context.MealTables.Add(entity);

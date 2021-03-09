@@ -12,12 +12,12 @@ namespace CarbTracker.Data
     {
         [Key]
         public int MealId { get; set; }
-        [ForeignKey(nameof(UserTable))]
+        //[ForeignKey(nameof(UserTable))]
         public Guid UserId { get; set; }
         [Required]
         public string MealName { get; set; }
         public int? TotalCarbs { get; set; }
-        public virtual UserTable UserTable { get; set; }
+       // public virtual UserTable UserTable { get; set; }
 
     }
 }
