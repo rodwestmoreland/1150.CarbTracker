@@ -16,7 +16,7 @@ namespace CarbTracker.Data
         public Guid UserId { get; set; }
         [Required]
         public string MealName { get; set; }
-        public int TotalCarbs { get; set; }
+        public int? TotalCarbs { get; set; }
         public virtual UserTable UserTable { get; set; }
 
     }
