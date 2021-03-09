@@ -25,9 +25,6 @@ namespace CarbTracker.WebAPI.Controllers
         }
 
 
-
-
-
         public IHttpActionResult Post(FoodCreate food)
         {
             if (!ModelState.IsValid)

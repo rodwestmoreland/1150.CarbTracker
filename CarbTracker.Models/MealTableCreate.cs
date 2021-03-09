@@ -16,8 +16,8 @@ namespace CarbTracker.Models
         [MaxLength(200, ErrorMessage = "Too many characters in this in this field.")]
         public string MealName { get; set; }
         public int TotalCarbs { get; set; }
-        [ForeignKey(nameof(UserTable))]
+        
         public Guid UserId { get; set; }
-        public virtual UserTable UserTable { get; set; }
+        
     }
 }
