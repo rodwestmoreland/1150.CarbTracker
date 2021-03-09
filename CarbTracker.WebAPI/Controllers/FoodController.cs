@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using CarbTracker.Data;
 using CarbTracker.Models;
 using CarbTracker.Services;
 
@@ -14,10 +15,19 @@ namespace CarbTracker.WebAPI.Controllers
     {
         public IHttpActionResult Get()
         {
+
+            
             FoodService foodService = CreateFoodService();
             var foods = foodService.GetFood();
             return Ok(foods);
+
+
         }
+
+
+
+
+
         public IHttpActionResult Post(FoodCreate food)
         {
             if (!ModelState.IsValid)

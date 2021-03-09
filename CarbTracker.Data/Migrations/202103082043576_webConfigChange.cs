@@ -3,7 +3,7 @@ namespace CarbTracker.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class March8 : DbMigration
+    public partial class webConfigChange : DbMigration
     {
         public override void Up()
         {
