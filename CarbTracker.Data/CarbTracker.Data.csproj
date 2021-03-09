@@ -93,6 +93,14 @@
     <Compile Include="Migrations\202103082043576_webConfigChange.Designer.cs">
       <DependentUpon>202103082043576_webConfigChange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103091659094_updatedMeal.cs" />
+    <Compile Include="Migrations\202103091659094_updatedMeal.Designer.cs">
+      <DependentUpon>202103091659094_updatedMeal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103091908527_userTableUpdate.cs" />
+    <Compile Include="Migrations\202103091908527_userTableUpdate.Designer.cs">
+      <DependentUpon>202103091908527_userTableUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserTable.cs" />
@@ -104,6 +112,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202103082043576_webConfigChange.resx">
       <DependentUpon>202103082043576_webConfigChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103091659094_updatedMeal.resx">
+      <DependentUpon>202103091659094_updatedMeal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103091908527_userTableUpdate.resx">
+      <DependentUpon>202103091908527_userTableUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
