@@ -15,24 +15,27 @@ namespace CarbTracker.Services
 
             using (var context = new ApplicationDbContext())
             {
-
-                List<Food> seedFoods = new List<Food>();
-                seedFoods.Add(new Food("Large Egg", 1, 2.25));
-                seedFoods.Add(new Food("Banana", 23, 4.5));
-                seedFoods.Add(new Food("Shredded Cheddar Cheese", 1, 4.0));
-                seedFoods.Add(new Food("Slice of Whole Grain Toast", 18, 1.25));
-                seedFoods.Add(new Food("8 oz Glass of Milk", 12, 8.0));
-                seedFoods.Add(new Food("8 oz Apple Juice", 28, 8.0));
-                seedFoods.Add(new Food("Sliced Turkey Sandwich", 35, 5.0));
-                seedFoods.Add(new Food("Small Bag of Cheetos", 13, 8.5));
-                seedFoods.Add(new Food("Can of Cherry Coke", 42, 12.0));
-                seedFoods.Add(new Food("Can of Coca Cola", 65, 12.0));
-                seedFoods.Add(new Food("Large Snickers Bar", 28, 2.0));
-
-                foreach (var food in seedFoods)
+                if (context.Foods.Count() < 2)
                 {
-                    context.Foods.Add(food);
-                    context.SaveChanges();
+                    List<Food> seedFoods = new List<Food>();
+                    seedFoods.Add(new Food("Large Egg", 1, 2.25));
+                    seedFoods.Add(new Food("Banana", 23, 4.5));
+                    seedFoods.Add(new Food("Shredded Cheddar Cheese", 1, 4.0));
+                    seedFoods.Add(new Food("Slice of Whole Grain Toast", 18, 1.25));
+                    seedFoods.Add(new Food("8 oz Glass of Milk", 12, 8.0));
+                    seedFoods.Add(new Food("8 oz Apple Juice", 28, 8.0));
+                    seedFoods.Add(new Food("Sliced Turkey Sandwich", 35, 5.0));
+                    seedFoods.Add(new Food("Small Bag of Cheetos", 13, 8.5));
+                    seedFoods.Add(new Food("Can of Cherry Coke", 42, 12.0));
+                    seedFoods.Add(new Food("Can of Coca Cola", 65, 12.0));
+                    seedFoods.Add(new Food("Large Snickers Bar", 28, 2.0));
+
+                    foreach (var food in seedFoods)
+                    {
+                        context.Foods.Add(food);
+                        context.SaveChanges();
+                    }
+
                 }
                 var query = context.Foods
                                 .Select(e => new FoodListItem
