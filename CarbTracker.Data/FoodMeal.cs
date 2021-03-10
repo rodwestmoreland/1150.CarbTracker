@@ -16,5 +16,10 @@ namespace CarbTracker.Data
         public int FoodId { get; set; }
         [ForeignKey(nameof(MealTable))]
         public int MealId { get; set; }
+
+        public virtual Food Food { get; set; }
+        public virtual MealTable MealTable { get; set; }
+
+
     }
 }

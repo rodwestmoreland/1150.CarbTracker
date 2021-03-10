@@ -84,11 +84,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FoodCreate.cs" />
+    <Compile Include="FoodListItem.cs" />
+    <Compile Include="MealTableCreate.cs" />
+    <Compile Include="MealTableListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarbTracker.Data\CarbTracker.Data.csproj">
+      <Project>{4fc0eccc-cd7f-4fa6-8e05-53465d9eed33}</Project>
+      <Name>CarbTracker.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

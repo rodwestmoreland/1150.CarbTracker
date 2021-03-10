@@ -12,7 +12,7 @@ namespace CarbTracker.Data
     {
         [Key]
         public int BSLevelId { get; set; }
-        [ForeignKey(nameof(UserTable))]
+       
         public Guid UserId { get; set; }
         [Required]
         public int BSLevel { get; set; }
@@ -21,5 +21,7 @@ namespace CarbTracker.Data
         public int CurrentWeight { get; set; }
         [Required]
         public DateTimeOffset CreatedAt { get; set; }
+    
     }
+    
 }

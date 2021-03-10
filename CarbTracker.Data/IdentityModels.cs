@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -11,6 +13,17 @@ namespace CarbTracker.Data
 {
     public class ApplicationUser : IdentityUser
     {
+        
+        
+        public string LastName { get; set; }
+        
+        public string FirstName { get; set; }
+        
+        public double? InsulinToCarbRatio { get; set; }
+        
+        public double? CorrectionFactor { get; set; }
+        
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
@@ -26,7 +39,7 @@ namespace CarbTracker.Data
         public DbSet<FoodMeal>          FoodMeals           { get; set; }
         public DbSet<Food>              Foods               { get; set; }
         public DbSet<MealTable>         MealTables          { get; set; }
-        public DbSet<UserTable>         UserTabeles         { get; set; }
+        
 
         public static ApplicationDbContext Create() => new ApplicationDbContext();
 
