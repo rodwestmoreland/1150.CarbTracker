@@ -13,27 +13,27 @@ namespace CarbTracker.XUnitTesting
         [TestMethod]
         public void AddingFood()
         {
-            using (var context = new ApplicationDbContext())
-                {
-                var getIndex = from x in context.MealTables
-                               where x.TotalCarbs.Equals(1.0)
-                               select x;
-                //foreach (var item in getIndex)
-                //{
-                //    Console.WriteLine(item.Name);
-                //}
-            }
+            //using (var context = new ApplicationDbContext())
+            //    {
+            //    //var getIndex = from x in context.MealTables
+            //    //               where x.TotalCarbs.Equals(1.0)
+            //    //               select x;
+            //    //foreach (var item in getIndex)
+            //    //{
+            //    //    Console.WriteLine(item.Name);
+            //    //}
+            //}
 
-            //FoodCreate addFood = new FoodCreate();
-            //addFood.Name = "Waffle";
-            //addFood.ServingInOunces = 1;
-            //addFood.Carbs = 50;
-            //addFood.Description = "waffle";
+            FoodCreate addFood = new FoodCreate();
+            addFood.Name = "Waffle";
+            addFood.ServingInOunces = 1;
+            addFood.Carbs = 50;
+            addFood.Description = "waffle";
 
-            //var foodService = new FoodService();
-            //var getMeAWaffle = foodService.CreateFood(addFood);
+            var foodService = new FoodService();
+            var getMeAWaffle = foodService.CreateFood(addFood);
 
-            //Assert.AreEqual(true, getMeAWaffle);
+            Assert.AreEqual(true, getMeAWaffle);
 
         }
     }

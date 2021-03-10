@@ -14,19 +14,15 @@ namespace CarbTracker.Data
     public class ApplicationUser : IdentityUser
     {
         
-        [Required]
+        
         public string LastName { get; set; }
-        [Required]
+        
         public string FirstName { get; set; }
-        [Required]
-        public double InsulinToCarbRatio { get; set; }
-        [Required]
-        public double CorrectionFactor { get; set; }
-        [Required]
-        public string Password { get; set; }
-        [Required]
-        public DateTimeOffset CreatedAt { get; set; }
-
+        
+        public double? InsulinToCarbRatio { get; set; }
+        
+        public double? CorrectionFactor { get; set; }
+        
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
