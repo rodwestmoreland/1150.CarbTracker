@@ -11,7 +11,7 @@ namespace CarbTracker.Data
     public class FoodMeal
     {
         [Key]
-        public int FoodMeadId { get; set; }
+        public int FoodMealId { get; set; }
         [ForeignKey(nameof(Food))]
         public int FoodId { get; set; }
         [ForeignKey(nameof(MealTable))]
