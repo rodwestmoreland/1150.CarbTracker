@@ -7,13 +7,13 @@ namespace CarbTracker.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class delUserTable : IMigrationMetadata
+    public sealed partial class redoEF : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(delUserTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(redoEF));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103092011153_delUserTable"; }
+            get { return "202103101623247_redoEF"; }
         }
         
         string IMigrationMetadata.Source
