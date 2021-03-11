@@ -56,11 +56,13 @@ namespace CarbTracker.Services
             var entity =
                 new Food()
                 {
+                    FoodId = 2,
                     Name = model.Name,
-                    Carbs = model.Carbs,
-                    ServingInOunces = model.ServingInOunces,
+                    Carbs = 50,
+                    ServingInOunces = 1.0,
                     Description = model.Description
                 };
+
             using (var context = new ApplicationDbContext())
             {
                 context.Foods.Add(entity);

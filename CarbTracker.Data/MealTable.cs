@@ -10,15 +10,24 @@ namespace CarbTracker.Data
 {
     public class MealTable
     {
+        public MealTable() { }
+        public MealTable(string name, int carbs)
+        {
+            MealName =      name;
+            TotalCarbs =    carbs;
+        }
+
         [Key]
-        public int MealId { get; set; }
+        public int      MealId { get; set; }
         
-        public Guid UserId { get; set; }
+        [ForeignKey(nameof(ApplicationUser))]
+        public string     Id { get; set; }
         
         [Required]
-        public string MealName { get; set; }
-        public int? TotalCarbs { get; set; }
-       
+        public string   MealName { get; set; }
+        public int?     TotalCarbs { get; set; }
+
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
     }
 }
