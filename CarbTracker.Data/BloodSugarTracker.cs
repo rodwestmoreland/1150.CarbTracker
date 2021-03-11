@@ -12,16 +12,18 @@ namespace CarbTracker.Data
     {
         [Key]
         public int BSLevelId { get; set; }
-       
-        public Guid UserId { get; set; }
+
+        [ForeignKey(nameof(ApplicationUser))]
+        public string Id { get; set; }
+
         [Required]
         public int BSLevel { get; set; }
         [Required]
         public int CarbsConsumed { get; set; }
-        public int CurrentWeight { get; set; }
-        [Required]
-        public DateTimeOffset CreatedAt { get; set; }
-    
+
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
+        
     }
     
 }

@@ -8,7 +8,7 @@ namespace CarbTracker.Models
 {
     public class MealTableListItem
     {
-        public Guid UserId { get; set; }
+        public string Id { get; set; }
         public int MealId { get; set; }
         public string MealName { get; set; }
         public int? TotalCarbs { get; set; } 
