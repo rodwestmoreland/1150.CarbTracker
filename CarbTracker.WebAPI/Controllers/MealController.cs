@@ -35,7 +35,7 @@ namespace CarbTracker.WebAPI.Controllers
         private MealService CreateMealService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var mealService = new MealService(userId);
+            var mealService = new MealService(userId.ToString());
             return mealService;
         }
     }

@@ -10,15 +10,44 @@ namespace CarbTracker.Services
 {
     public class MealService
     {
-        private readonly Guid _userId;
-        public MealService(Guid userId)
+        private readonly string _userId;
+        public MealService(string userId)
         {
             _userId = userId;
         }
+
+
         public IEnumerable<MealTableListItem> GetMeal()
         {
 
-            using (var context = new ApplicationDbContext())
+
+            //
+            //    if (context.MealTables.Count() < 2)
+            //    {
+            //        List<MealTable> seedMeals = new List<MealTable>();
+            //        seedMeals.Add(new MealTable();
+            //        seedMeals.Add(new Food("Banana", 23, 4.5));
+            //        seedMeals.Add(new Food("Shredded Cheddar Cheese", 1, 4.0));
+            //        seedMeals.Add(new Food("Slice of Whole Grain Toast", 18, 1.25));
+            //        seedMeals.Add(new Food("8 oz Glass of Milk", 12, 8.0));
+            //        seedMeals.Add(new Food("8 oz Apple Juice", 28, 8.0));
+            //        seedMeals.Add(new Food("Sliced Turkey Sandwich", 35, 5.0));
+            //        seedMeals.Add(new Food("Small Bag of Cheetos", 13, 8.5));
+            //        seedMeals.Add(new Food("Can of Cherry Coke", 42, 12.0));
+            //        seedMeals.Add(new Food("Can of Coca Cola", 65, 12.0));
+            //        seedMeals.Add(new Food("Large Snickers Bar", 28, 2.0));
+
+            //        foreach (var meals in seedMeals)
+            //        {
+            //            context.MealTables.Add(meals);
+            //            context.SaveChanges();
+            //        }
+
+            
+
+
+
+                using (var context = new ApplicationDbContext())
             {
                 var query = context.MealTables
                                 .Select(e => new MealTableListItem
@@ -26,7 +55,7 @@ namespace CarbTracker.Services
                                     MealId = e.MealId,
                                     MealName = e.MealName,
                                     TotalCarbs = e.TotalCarbs,
-                                    UserId = _userId
+                                    Id = _userId
                                 }
                             );
 
@@ -41,7 +70,7 @@ namespace CarbTracker.Services
             {
                 MealName = model.MealName,
                 TotalCarbs = model.TotalCarbs,
-                UserId = _userId
+                Id = _userId
             };
 
             using (var context = new ApplicationDbContext())

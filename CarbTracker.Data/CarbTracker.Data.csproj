@@ -101,6 +101,10 @@
     <Compile Include="Migrations\202103101838268_removeItemsAccount.Designer.cs">
       <DependentUpon>202103101838268_removeItemsAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103111543365_associateUIDs2.cs" />
+    <Compile Include="Migrations\202103111543365_associateUIDs2.Designer.cs">
+      <DependentUpon>202103111543365_associateUIDs2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103101838268_removeItemsAccount.resx">
       <DependentUpon>202103101838268_removeItemsAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103111543365_associateUIDs2.resx">
+      <DependentUpon>202103111543365_associateUIDs2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

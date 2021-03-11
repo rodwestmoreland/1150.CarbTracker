@@ -26,8 +26,8 @@ namespace CarbTracker.XUnitTesting
 
             FoodCreate addFood = new FoodCreate();
             addFood.Name = "Waffle";
-            addFood.ServingInOunces = 1;
-            addFood.Carbs = 50;
+            //addFood.ServingInOunces = 1.0;
+            //addFood.Carbs = 50;
             addFood.Description = "waffle";
 
             var foodService = new FoodService();
