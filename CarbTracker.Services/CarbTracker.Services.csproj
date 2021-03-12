@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FoodMealService.cs" />
     <Compile Include="FoodService.cs" />
     <Compile Include="MealService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

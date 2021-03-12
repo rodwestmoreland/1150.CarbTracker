@@ -89,21 +89,9 @@
     <Compile Include="Food.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="MealTable.cs" />
-    <Compile Include="Migrations\202103101623247_redoEF.cs" />
-    <Compile Include="Migrations\202103101623247_redoEF.Designer.cs">
-      <DependentUpon>202103101623247_redoEF.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103101834184_removeItemsAccountClass.cs" />
-    <Compile Include="Migrations\202103101834184_removeItemsAccountClass.Designer.cs">
-      <DependentUpon>202103101834184_removeItemsAccountClass.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103101838268_removeItemsAccount.cs" />
-    <Compile Include="Migrations\202103101838268_removeItemsAccount.Designer.cs">
-      <DependentUpon>202103101838268_removeItemsAccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103111543365_associateUIDs2.cs" />
-    <Compile Include="Migrations\202103111543365_associateUIDs2.Designer.cs">
-      <DependentUpon>202103111543365_associateUIDs2.cs</DependentUpon>
+    <Compile Include="Migrations\202103121440046_initMar12.cs" />
+    <Compile Include="Migrations\202103121440046_initMar12.Designer.cs">
+      <DependentUpon>202103121440046_initMar12.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,17 +101,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202103101623247_redoEF.resx">
-      <DependentUpon>202103101623247_redoEF.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103101834184_removeItemsAccountClass.resx">
-      <DependentUpon>202103101834184_removeItemsAccountClass.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103101838268_removeItemsAccount.resx">
-      <DependentUpon>202103101838268_removeItemsAccount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103111543365_associateUIDs2.resx">
-      <DependentUpon>202103111543365_associateUIDs2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103121440046_initMar12.resx">
+      <DependentUpon>202103121440046_initMar12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
