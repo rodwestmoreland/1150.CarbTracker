@@ -20,6 +20,11 @@ namespace CarbTracker.Data
         public virtual Food Food { get; set; }
         public virtual MealTable MealTable { get; set; }
 
-
+        public FoodMeal() { }
+        public FoodMeal(int foodId, int mealId )
+        {
+            FoodId = foodId;
+            MealId = mealId;
+        }
     }
 }

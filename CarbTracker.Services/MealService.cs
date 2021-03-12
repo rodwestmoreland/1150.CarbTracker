@@ -20,35 +20,26 @@ namespace CarbTracker.Services
         public IEnumerable<MealTableListItem> GetMeal()
         {
 
-
-            //
-            //    if (context.MealTables.Count() < 2)
-            //    {
-            //        List<MealTable> seedMeals = new List<MealTable>();
-            //        seedMeals.Add(new MealTable();
-            //        seedMeals.Add(new Food("Banana", 23, 4.5));
-            //        seedMeals.Add(new Food("Shredded Cheddar Cheese", 1, 4.0));
-            //        seedMeals.Add(new Food("Slice of Whole Grain Toast", 18, 1.25));
-            //        seedMeals.Add(new Food("8 oz Glass of Milk", 12, 8.0));
-            //        seedMeals.Add(new Food("8 oz Apple Juice", 28, 8.0));
-            //        seedMeals.Add(new Food("Sliced Turkey Sandwich", 35, 5.0));
-            //        seedMeals.Add(new Food("Small Bag of Cheetos", 13, 8.5));
-            //        seedMeals.Add(new Food("Can of Cherry Coke", 42, 12.0));
-            //        seedMeals.Add(new Food("Can of Coca Cola", 65, 12.0));
-            //        seedMeals.Add(new Food("Large Snickers Bar", 28, 2.0));
-
-            //        foreach (var meals in seedMeals)
-            //        {
-            //            context.MealTables.Add(meals);
-            //            context.SaveChanges();
-            //        }
-
-            
-
-
-
-                using (var context = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
+                if (context.MealTables.Count() < 2)
+                {
+                    List<MealTable> seedMeals = new List<MealTable>();
+                    seedMeals.Add(new MealTable("Cheese Sandwich", 37));
+                    seedMeals.Add(new MealTable("Omelet", 2));
+                    seedMeals.Add(new MealTable("BLT", 38));
+                    seedMeals.Add(new MealTable("Turkey Sandwich", 37));
+                    seedMeals.Add(new MealTable("French Toast", 43));
+                    seedMeals.Add(new MealTable("Banana Apple Salad", 33));
+                    seedMeals.Add(new MealTable("Turkey Club", 39));
+                    seedMeals.Add(new MealTable("Apple Banana Smoothie", 45));
+
+                    foreach (var meals in seedMeals)
+                    {
+                        context.MealTables.Add(meals);
+                        context.SaveChanges();
+                    }
+                }
                 var query = context.MealTables
                                 .Select(e => new MealTableListItem
                                 {
@@ -60,12 +51,13 @@ namespace CarbTracker.Services
                             );
 
                 return query.ToArray();
+
             }
         }
 
         public bool CreateMeal(MealTableCreate model)
         {
-            
+
             var entity = new MealTable()
             {
                 MealName = model.MealName,
