@@ -71,5 +71,50 @@ namespace CarbTracker.Services
                 return context.SaveChanges() == 1;
             }
         }
+
+        public bool DeleteMealId(int mealId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                MealTable entity =
+                    context
+                        .MealTables
+                        .Single(e => e.MealId == mealId && e.Id == _userId);
+
+                context.MealTables.Remove(entity);
+                
+
+                return context.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteMealName(string mealName)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                MealTable entity =
+                    context
+                        .MealTables
+                        .Single(e => e.MealName == mealName && e.Id == _userId);
+
+                context.MealTables.Remove(entity);
+
+
+                return context.SaveChanges() == 1;
+            }
+        }
+
+        public bool UpdateMeal(MealEdit model)
+        {
+            using(var context = new ApplicationDbContext())
+            {
+                var entity = context.MealTables.Single(e => e.MealId == model.MealId && e.Id == _userId);
+
+                entity.MealName = model.MealName;
+                entity.TotalCarbs = model.TotalCarbs;
+
+                return context.SaveChanges() == 1;
+            }
+        }
     }
 }

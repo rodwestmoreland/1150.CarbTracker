@@ -10,6 +10,7 @@ namespace CarbTracker.Services
 {
     public class FoodService
     {
+        
         public IEnumerable<FoodListItem> GetFood()
         {
 
@@ -67,6 +68,55 @@ namespace CarbTracker.Services
                 context.Foods.Add(entity);
                 return context.SaveChanges() == 1;
             }
+        }
+
+        public bool DeleteFoodId(int foodId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                        .Foods
+                        .Single(e => e.FoodId == foodId);
+
+                context.Foods.Remove(entity);
+
+
+                return context.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteFoodName(string foodName)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                        .Foods
+                        .Single(e => e.Name == foodName);
+
+                context.Foods.Remove(entity);
+
+
+                return context.SaveChanges() == 1;
+            }
+        }
+
+        public bool UpdateFood (FoodEdit model)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity = context.Foods.Single(e => e.FoodId == model.FoodId);
+
+
+                entity.Name = model.Name;
+                entity.Carbs = model.Carbs;
+                entity.ServingInOunces = model.ServingInOunces;
+                entity.Description = model.Description;
+
+                return context.SaveChanges() == 1;
+            }
+            
         }
     }
 }
