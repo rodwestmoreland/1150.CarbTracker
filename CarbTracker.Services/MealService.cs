@@ -16,39 +16,26 @@ namespace CarbTracker.Services
             _userId = userId;
         }
 
-
         public IEnumerable<MealTableListItem> GetMeal()
-        {
-
-
-            //
-            //    if (context.MealTables.Count() < 2)
-            //    {
-            //        List<MealTable> seedMeals = new List<MealTable>();
-            //        seedMeals.Add(new MealTable();
-            //        seedMeals.Add(new Food("Banana", 23, 4.5));
-            //        seedMeals.Add(new Food("Shredded Cheddar Cheese", 1, 4.0));
-            //        seedMeals.Add(new Food("Slice of Whole Grain Toast", 18, 1.25));
-            //        seedMeals.Add(new Food("8 oz Glass of Milk", 12, 8.0));
-            //        seedMeals.Add(new Food("8 oz Apple Juice", 28, 8.0));
-            //        seedMeals.Add(new Food("Sliced Turkey Sandwich", 35, 5.0));
-            //        seedMeals.Add(new Food("Small Bag of Cheetos", 13, 8.5));
-            //        seedMeals.Add(new Food("Can of Cherry Coke", 42, 12.0));
-            //        seedMeals.Add(new Food("Can of Coca Cola", 65, 12.0));
-            //        seedMeals.Add(new Food("Large Snickers Bar", 28, 2.0));
-
-            //        foreach (var meals in seedMeals)
-            //        {
-            //            context.MealTables.Add(meals);
-            //            context.SaveChanges();
-            //        }
-
-            
-
-
-
+        {    
                 using (var context = new ApplicationDbContext())
-            {
+                {
+                //    List<MealTable> seedMeals = new List<MealTable>();
+                //    seedMeals.Add(new MealTable("Cheese Sandwich", 45));
+                //    seedMeals.Add(new MealTable("Omlet", 32));
+                //    foreach (var meals in seedMeals)
+                //{
+                //    context.MealTables.Add(meals);
+                //    context.SaveChanges();
+                //}
+
+
+                //var tieFoodToMeal = (from t in context.FoodMeals
+                //                     join f in context.Foods      on t.FoodId equals f.FoodId
+                //                     join m in context.MealTables on t.MealId equals m.MealId
+                //                     select new );
+
+
                 var query = context.MealTables
                                 .Select(e => new MealTableListItem
                                 {
