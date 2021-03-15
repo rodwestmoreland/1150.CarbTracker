@@ -15,15 +15,10 @@ namespace CarbTracker.WebAPI.Controllers
     {
         public IHttpActionResult Get()
         {
-
-            
             FoodService foodService = CreateFoodService();
             var foods = foodService.GetFood();
             return Ok(foods);
-
-
         }
-
 
         public IHttpActionResult Post(FoodCreate food)
         {
@@ -37,11 +32,43 @@ namespace CarbTracker.WebAPI.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult Delete(string food)
+        {
+            int number;
+            bool success = Int32.TryParse(food, out number);
+
+            var service = CreateFoodService();
+            if (success)
+            {
+                if (!service.DeleteFoodId(number))
+                    return InternalServerError();
+            }
+            else
+            {
+                if (!service.DeleteFoodName(food))
+                    return InternalServerError();
+            }
+            return Ok();
+        }
+
+        public IHttpActionResult Put(FoodEdit food)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateFoodService();
+
+            if (!service.UpdateFood(food))
+                return InternalServerError();
+
+            return Ok();
+        }
+
         private FoodService CreateFoodService()
         {
             var foodService = new FoodService();
             return foodService;
         }
-
     }
 }
