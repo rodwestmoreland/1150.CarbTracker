@@ -16,9 +16,16 @@ namespace CarbTracker.Services
 
             using (var context = new ApplicationDbContext())
             {
-                if (context.Foods.Count() < 2)
-                {
-                    List<Food> seedFoods = new List<Food>();
+
+                //if (context.Foods.Count() < 2)
+                //{
+                    // Warning - reseed regardless of current content !!!
+                    context.Database.ExecuteSqlCommand("DELETE FROM dbo.Food"); // DELETE ALL ROWS! 
+                    context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('dbo.Food', RESEED, 0)"); // Reseed index
+
+                List<Food> seedFoods = new List<Food>();
+                    seedFoods.Add(new Food("Large Egg", 1, 2.25));
+                    
                     seedFoods.Add(new Food("Cheese", 1, 1));
                     seedFoods.Add(new Food("Bread", 18, 1.25));
                     seedFoods.Add(new Food("Egg", 1, 2));
@@ -36,7 +43,7 @@ namespace CarbTracker.Services
                         context.SaveChanges();
                     }
 
-                }
+                //}
                 var query = context.Foods
                                 .Select(e => new FoodListItem
                                 {
@@ -56,11 +63,11 @@ namespace CarbTracker.Services
             var entity =
                 new Food()
                 {
-                    FoodId = 2,
-                    Name = model.Name,
-                    Carbs = 50,
-                    ServingInOunces = 1.0,
-                    Description = model.Description
+                    
+                    Name =              model.Name,
+                    Carbs =             model.Carbs,
+                    ServingInOunces =   model.ServingInOunces,
+                    Description =       model.Description
                 };
 
             using (var context = new ApplicationDbContext())
