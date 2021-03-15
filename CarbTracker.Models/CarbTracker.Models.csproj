@@ -86,8 +86,9 @@
   <ItemGroup>
     <Compile Include="FoodCreate.cs" />
     <Compile Include="FoodEdit.cs" />
-    <Compile Include="FoodListItem.cs" />
     <Compile Include="MealEdit.cs" />
+    <Compile Include="FoodMealCreate.cs" />
+    <Compile Include="FoodMealListItem.cs" />
     <Compile Include="MealTableCreate.cs" />
     <Compile Include="MealTableListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
