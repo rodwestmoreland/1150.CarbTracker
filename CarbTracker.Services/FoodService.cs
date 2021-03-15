@@ -10,11 +10,13 @@ namespace CarbTracker.Services
 {
     public class FoodService
     {
+        
         public IEnumerable<FoodListItem> GetFood()
         {
 
             using (var context = new ApplicationDbContext())
             {
+
                 //if (context.Foods.Count() < 2)
                 //{
                     // Warning - reseed regardless of current content !!!
@@ -23,17 +25,18 @@ namespace CarbTracker.Services
 
                 List<Food> seedFoods = new List<Food>();
                     seedFoods.Add(new Food("Large Egg", 1, 2.25));
+                    
+                    seedFoods.Add(new Food("Cheese", 1, 1));
+                    seedFoods.Add(new Food("Bread", 18, 1.25));
+                    seedFoods.Add(new Food("Egg", 1, 2));
+                    seedFoods.Add(new Food("Milk", 12, 8));
                     seedFoods.Add(new Food("Banana", 23, 4.5));
-                    seedFoods.Add(new Food("Shredded Cheddar Cheese", 1, 4.0));
-                    seedFoods.Add(new Food("Slice of Whole Grain Toast", 18, 1.25));
-                    seedFoods.Add(new Food("8 oz Glass of Milk", 12, 8.0));
-                    seedFoods.Add(new Food("8 oz Apple Juice", 28, 8.0));
-                    seedFoods.Add(new Food("Sliced Turkey Sandwich", 35, 5.0));
-                    seedFoods.Add(new Food("Small Bag of Cheetos", 13, 8.5));
-                    seedFoods.Add(new Food("Can of Cherry Coke", 42, 12.0));
-                    seedFoods.Add(new Food("Can of Coca Cola", 65, 12.0));
-                    seedFoods.Add(new Food("Large Snickers Bar", 28, 2.0));
-
+                    seedFoods.Add(new Food("Turkey", 1, 3));
+                    seedFoods.Add(new Food("Apple", 10, 4));
+                    seedFoods.Add(new Food("Lettuce", 0, 1));
+                    seedFoods.Add(new Food("Tomato", 1, 1));
+                    seedFoods.Add(new Food("bacon", 1, 0));
+                    
                     foreach (var food in seedFoods)
                     {
                         context.Foods.Add(food);
@@ -72,6 +75,55 @@ namespace CarbTracker.Services
                 context.Foods.Add(entity);
                 return context.SaveChanges() == 1;
             }
+        }
+
+        public bool DeleteFoodId(int foodId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                        .Foods
+                        .Single(e => e.FoodId == foodId);
+
+                context.Foods.Remove(entity);
+
+
+                return context.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteFoodName(string foodName)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                        .Foods
+                        .Single(e => e.Name == foodName);
+
+                context.Foods.Remove(entity);
+
+
+                return context.SaveChanges() == 1;
+            }
+        }
+
+        public bool UpdateFood (FoodEdit model)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity = context.Foods.Single(e => e.FoodId == model.FoodId);
+
+
+                entity.Name = model.Name;
+                entity.Carbs = model.Carbs;
+                entity.ServingInOunces = model.ServingInOunces;
+                entity.Description = model.Description;
+
+                return context.SaveChanges() == 1;
+            }
+            
         }
     }
 }
