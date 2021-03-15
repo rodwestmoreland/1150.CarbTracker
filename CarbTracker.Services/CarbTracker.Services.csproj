@@ -90,6 +90,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CarbTracker.Data\CarbTracker.Data.csproj">
       <Project>{4fc0eccc-cd7f-4fa6-8e05-53465d9eed33}</Project>
       <Name>CarbTracker.Data</Name>
@@ -98,10 +102,6 @@
       <Project>{3301a2b3-f653-4bf0-afc4-0723db187961}</Project>
       <Name>CarbTracker.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
