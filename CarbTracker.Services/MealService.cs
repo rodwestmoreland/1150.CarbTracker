@@ -18,9 +18,9 @@ namespace CarbTracker.Services
 
         public IEnumerable<MealTableListItem> GetMeal()
 
-        {    
-                using (var context = new ApplicationDbContext())
-                {
+        {
+            using (var context = new ApplicationDbContext())
+            {
                 //    List<MealTable> seedMeals = new List<MealTable>();
                 //    seedMeals.Add(new MealTable("Cheese Sandwich", 45));
                 //    seedMeals.Add(new MealTable("Omlet", 32));
@@ -35,9 +35,9 @@ namespace CarbTracker.Services
                 //                     join f in context.Foods      on t.FoodId equals f.FoodId
                 //                     join m in context.MealTables on t.MealId equals m.MealId
                 //                     select new );
+            }
 
-
-        {
+        
 
             using (var context = new ApplicationDbContext())
             {
