@@ -13,21 +13,21 @@ using System.Web.UI;
 namespace CarbTracker.ConsoleUI
 {
     
-    public class SyncAPIFoods:HttpHandler
+    public class SyncAPIMeals:HttpHandler
     {
-        public void GetFoods(string accessToken, string baseAddress)
+        public void GetMeals(string accessToken, string baseAddress)
         {
             client.DefaultRequestHeaders.Authorization =
                    new AuthenticationHeaderValue("Bearer", accessToken);
 
-        var apiResponse = client.GetAsync(baseAddress + "api/food").Result;
+        var apiResponse = client.GetAsync(baseAddress + "api/meal").Result;
 
             if (apiResponse.IsSuccessStatusCode)
             {
                 var JsonContent = apiResponse.Content.ReadAsStringAsync().Result;
-                
+                //Token Message = JsonConvert.DeserializeObject<Token>(JsonContent);
                 Console.WriteLine("APIResponse : " + JsonContent.ToString());
-                
+                //Console.WriteLine("APIResponse : " + Message.ToString());
             }
             else
             {
@@ -35,23 +35,20 @@ namespace CarbTracker.ConsoleUI
             }
         }
 
-        public void AddFood(string accessToken, string baseAddress)
+        public void AddMeal(string accessToken, string baseAddress)
         {
             client.DefaultRequestHeaders.Authorization = 
                    new AuthenticationHeaderValue("Bearer", accessToken);
             
             var serializer = new JavaScriptSerializer();
-            var payload = new FoodType();
+            var payload = new MealType();
 
-            payload.Name =          "hotdog";
-            payload.Carbs =         "3";
-            payload.ServingInOunces = "7.2";
-            payload.Description =   "bun and weenie";
+            payload.MealName =  "another corndog";
+            payload.TotalCarbs = 30;
 
-            
             var serializedResult = serializer.Serialize(payload);
 
-            var apiResponse =   client.PostAsync(   baseAddress + "api/food", 
+            var apiResponse =   client.PostAsync(   baseAddress + "api/meal", 
                                 new StringContent(  serializedResult, 
                                                     Encoding.UTF8,"application/json"))
                                                     .Result;

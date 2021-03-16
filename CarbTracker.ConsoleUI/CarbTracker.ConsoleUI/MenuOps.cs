@@ -8,7 +8,6 @@ namespace CarbTracker.ConsoleUI
 {
     public class MenuOps
     {
-
         public string AToken
         {
             get => _atoken;
@@ -21,10 +20,7 @@ namespace CarbTracker.ConsoleUI
             set => _baseUrl = value;
         }
        
-        public MenuOps()
-        {
-
-        }
+        public MenuOps(){}
         public MenuOps(string accessToken, string baseUrl)
         {
             _atoken = accessToken;
@@ -32,20 +28,19 @@ namespace CarbTracker.ConsoleUI
         }
         public static string _atoken;
         public static string _baseUrl;
-
-        
         public static List<string> menuOptions = new List<string>();
         
         public static void MenuSelections()
         {
-            menuOptions.Add("Find total carbs in food\n");
+            menuOptions.Add("Enter Blood Sugar Information\n");
             menuOptions.Add("Find total carbs in meal\n");
+            menuOptions.Add("See all foods in database\n");
+            menuOptions.Add("See all meals in database\n");
             menuOptions.Add("Add a new food item\n");
             menuOptions.Add("Add a new meal item\n");
             menuOptions.Add("Modify a meal item\n");
-            menuOptions.Add("Delete a meail item\n");
+            menuOptions.Add("Delete a meal item\n");
             menuOptions.Add("Exit application\n");
-
 
             bool continueToRun = true;
             while (continueToRun)
@@ -62,36 +57,61 @@ namespace CarbTracker.ConsoleUI
                 MenuSelectionCheck(menuSelect);
             }// \while
 
-
         }//MenuSelections()
 
 
         public static void MenuProcessing(byte selection)
         {
-            var ops = new MenuOps();
-            var ui = new UI();
-
             Console.Clear();
 
             switch (selection)
             {
                 case 1:
-                    
+                    Console.WriteLine("not implemented yet");
                     ClickToCont();
                     break;
                 case 2:
-                    
+                    Console.WriteLine("not implemented yet");
                     ClickToCont();
                     break;
+
                 case 3:
                     var getFoods = new SyncAPIFoods();
                     getFoods.GetFoods(_atoken, _baseUrl);
                     ClickToCont();
                     break;
                 case 4:
-                    
+                    var getMeals = new SyncAPIMeals();
+                    getMeals.GetMeals(_atoken, _baseUrl);
                     ClickToCont();
                     break;
+                case 5:
+                    var addFoods = new SyncAPIFoods();
+                    addFoods.AddFood(_atoken, _baseUrl);
+                    ClickToCont();
+                    break;
+                case 6:
+                    var addMeal = new SyncAPIMeals();
+                    addMeal.AddMeal(_atoken, _baseUrl);
+                    ClickToCont();
+                    break;
+                case 7:
+                    Console.WriteLine("not implemented yet");
+                    ClickToCont();
+                    break;
+                case 8:
+                    Console.WriteLine("not implemented yet");
+                    ClickToCont();
+                    break;
+                case 9:
+                    Console.WriteLine("not implemented yet");
+                    ClickToCont();
+                    break;
+                case 10:
+                    Console.WriteLine("not implemented yet");
+                    ClickToCont();
+                    break;
+
             }
 
         }//MenuProcessing()
