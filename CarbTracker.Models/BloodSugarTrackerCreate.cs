@@ -10,8 +10,6 @@ namespace CarbTracker.Models
     public class BloodSugarTrackerCreate
     {
         [Required]
-        [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
-        [MaxLength(200, ErrorMessage = "Too many characters in this in this field.")]
         public int BSLevel { get; set; }
         public int CarbsConsumed { get; set; }
 

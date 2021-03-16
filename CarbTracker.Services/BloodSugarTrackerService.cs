@@ -10,6 +10,11 @@ namespace CarbTracker.Services
 {
     public class BloodSugarTrackerService
     {
+        private readonly string _userId;
+        public BloodSugarTrackerService (string userId)
+        {
+            _userId = userId;
+        }
         public IEnumerable<BloodSugarTrackerListItem> GetBloodSugarTracker()
         {
 
@@ -22,21 +27,23 @@ namespace CarbTracker.Services
                                 {
                                     BSLevelId = e.BSLevelId,
                                     BSLevel = e.BSLevel,
-                                    CarbsConsumed = e.CarbsConsumed
+                                    CarbsConsumed = e.CarbsConsumed,
+                                    Id = _userId
                                 }
                             ) ;
 
                 return query.ToArray();
             }
         }
-        public bool CreateBloodSugar(BloodSugarTrackerCreate model)
+        public bool CreateBloodSugarTracker(BloodSugarTrackerCreate model)
         {
             var entity =
                 new BloodSugarTracker()
                 {
 
                     BSLevel = model.BSLevel,
-                    CarbsConsumed = model.CarbsConsumed
+                    CarbsConsumed = model.CarbsConsumed,
+                    Id = _userId
                 };
 
             using (var context = new ApplicationDbContext())
@@ -46,11 +53,25 @@ namespace CarbTracker.Services
             }
         }
 
+        public bool DeleteBloodSugarTrackerId (int bsLevelId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                BloodSugarTracker entity =
+                    context
+                        .BloodSugarTrackers
+                        .Single(e => e.BSLevelId == bsLevelId && e.Id == _userId);
+
+                context.BloodSugarTrackers.Remove(entity);
+
+                return context.SaveChanges() == 1;
+            }
+        }
         public bool UpdateBloodSugarTracker(BloodSugarTrackerEdit model)
         {
             using (var context = new ApplicationDbContext())
             {
-                var entity = context.BloodSugarTrackers.Single(e => e.BSLevelId == model.BSLevelId) ;
+                var entity = context.BloodSugarTrackers.Single(e => e.BSLevelId == model.BSLevelId && e.Id == _userId) ;
 
 
                 entity.BSLevel = model.BSLevel;
