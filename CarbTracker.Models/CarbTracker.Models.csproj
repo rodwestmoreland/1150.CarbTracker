@@ -84,6 +84,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BloodSugarTrackerCreate.cs" />
+    <Compile Include="BloodSugarTrackerEdit.cs" />
+    <Compile Include="BloodSugarTrackerListItem.cs" />
     <Compile Include="FoodCreate.cs" />
     <Compile Include="FoodEdit.cs" />
     <Compile Include="FoodListItem.cs" />
