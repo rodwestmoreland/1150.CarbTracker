@@ -12,15 +12,15 @@ using System.Web.UI;
 
 namespace CarbTracker.ConsoleUI
 {
-    public class SyncAPIFoods
+    
+    public class SyncAPIFoods:HttpHandler
     {
-        private static HttpClientHandler   handler = new HttpClientHandler();
-        private static HttpClient          client = new HttpClient(handler);
-        
         public void GetFoods(string accessToken, string baseAddress)
         {
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var apiResponse = client.GetAsync(baseAddress + "api/food").Result;
+            client.DefaultRequestHeaders.Authorization =
+                   new AuthenticationHeaderValue("Bearer", accessToken);
+
+        var apiResponse = client.GetAsync(baseAddress + "api/food").Result;
 
             if (apiResponse.IsSuccessStatusCode)
             {
@@ -37,10 +37,8 @@ namespace CarbTracker.ConsoleUI
 
         public void AddFood(string accessToken, string baseAddress)
         {
-
-            //var handler = new HttpClientHandler();
-            //var client = new HttpClient(handler);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            client.DefaultRequestHeaders.Authorization = 
+                   new AuthenticationHeaderValue("Bearer", accessToken);
             
             var serializer = new JavaScriptSerializer();
             var payload = new FoodType();
