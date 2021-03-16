@@ -16,8 +16,6 @@ namespace CarbTracker.ConsoleUI
 
         public void Run()
         {
-            
-
             Username = "new2@new.org";
             Password = "Password-1";
             var userAccount = new SyncUserAccount();
@@ -25,7 +23,6 @@ namespace CarbTracker.ConsoleUI
             Token token = null;
 
             token = Token.GetAccessToken(baseUrl, Username, Password);
-            //MenuOps.MenuSelections();
 
             if (!string.IsNullOrEmpty(token.AccessToken))
             {
@@ -33,24 +30,6 @@ namespace CarbTracker.ConsoleUI
                 ops.AToken = token.AccessToken;
                 ops.BaseUrl = baseUrl;
                 MenuOps.MenuSelections();
-
-                //Console.WriteLine("token good");
-                //Console.WriteLine("Get food = 1 \nPost food = 2\n");
-                //var select = Console.ReadLine();
-
-                //if (select == "1")
-                //{
-                //    var getFood = new SyncAPIFoods();
-                //    getFood.GetFoods(token.AccessToken, baseUrl);
-
-                //}
-                //else
-                //{
-
-                //    var addFood = new SyncAPIFoods();
-                //    addFood.AddFood(token.AccessToken, baseUrl);
-                //}
-
             }
             else
             {
@@ -60,7 +39,6 @@ namespace CarbTracker.ConsoleUI
 
             Console.ReadLine();
         } 
-
     }
 }
 
