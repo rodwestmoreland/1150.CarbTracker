@@ -10,14 +10,14 @@ namespace CarbTracker.ConsoleUI
 {
     public class SyncUserAccount
     {
-        public void RegisterAccount()
+        public void RegisterAccount(string baseUrl, string userName, string password)
         {
             using (var client = new WebClient())
             {
                 var newAccount = new UserAccount();
-                newAccount.Email = "new@new.org";
-                newAccount.Password = "Password-1";
-                newAccount.ConfirmPassword = "Password-1";
+                newAccount.Email = userName;
+                newAccount.Password = password;
+                newAccount.ConfirmPassword = password;
                 newAccount.LastName = "doe";
                 newAccount.FirstName = "bill";
                 newAccount.InsulinToCarbRatio = 1.0;
@@ -25,7 +25,7 @@ namespace CarbTracker.ConsoleUI
 
                 client.Headers.Add("Content-Type:application/json");
                 client.Headers.Add("Accept:application/json");
-                var result =    client.UploadString("https://localhost:44314/api/account/register",
+                var result =    client.UploadString(baseUrl+"/api/account/register",
                                 JsonConvert.SerializeObject(newAccount));
               
                 Console.WriteLine(result);
