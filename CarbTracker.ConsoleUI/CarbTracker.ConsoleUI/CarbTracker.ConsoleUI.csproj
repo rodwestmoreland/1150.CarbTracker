@@ -50,11 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MealType .cs" />
     <Compile Include="FoodType.cs" />
     <Compile Include="HttpHandler.cs" />
     <Compile Include="MenuOps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SyncAPIMeals.cs" />
     <Compile Include="SyncAPIFoods.cs" />
     <Compile Include="SyncUserAccount.cs" />
     <Compile Include="Token.cs" />

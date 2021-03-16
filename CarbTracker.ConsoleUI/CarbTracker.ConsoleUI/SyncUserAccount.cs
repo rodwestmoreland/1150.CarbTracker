@@ -10,6 +10,10 @@ namespace CarbTracker.ConsoleUI
 {
     public class SyncUserAccount
     {
+        private static string Username = string.Empty;
+        private static string Password = string.Empty;
+        private static string baseUrl = "https://localhost:44314/";
+
         public void RegisterAccount(string baseUrl, string userName, string password)
         {
             using (var client = new WebClient())
@@ -31,5 +35,51 @@ namespace CarbTracker.ConsoleUI
                 Console.WriteLine(result);
             }
         }
+
+        public void UserCheck()
+        {
+            Token token = null;
+
+            Console.Write("Do you want to register as a first time user? y/n ");
+            string userInput = Console.ReadLine();
+            if(userInput == "y")
+            {
+                Console.Write("Enter email address: ");
+                Username = Console.ReadLine();
+                Console.Write("Enter a password (10 characters, upper, lower and special character \n");
+                Password = Console.ReadLine();
+
+                RegisterAccount(baseUrl, Username, Password);
+            }
+            else
+            {
+                Console.WriteLine("Welcome. Please log in");
+                Console.Write("Enter email address: ");
+                Username = Console.ReadLine();
+                Console.Write("Enter a password (10 characters, upper, lower and special character \n");
+                Password = Console.ReadLine();
+            }
+
+
+
+
+            token = Token.GetAccessToken(baseUrl, Username, Password);
+
+            if (!string.IsNullOrEmpty(token.AccessToken))
+            {
+                var ops = new MenuOps(token.AccessToken, baseUrl);
+                ops.AToken = token.AccessToken;
+                ops.BaseUrl = baseUrl;
+                MenuOps.MenuSelections();
+            }
+            else
+            {
+                Console.WriteLine(token.Error);
+            }
+            Console.WriteLine("nothing happened");
+
+            Console.ReadLine();
+        //}
+    }
     }
 }
