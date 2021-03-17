@@ -12,22 +12,39 @@ using System.Web.UI;
 
 namespace CarbTracker.ConsoleUI
 {
-    
-    public class SyncAPIMeals:HttpHandler
+
+    public class SyncAPIMeals : HttpHandler
     {
         public void GetMeals(string accessToken, string baseAddress)
         {
             client.DefaultRequestHeaders.Authorization =
                    new AuthenticationHeaderValue("Bearer", accessToken);
 
-        var apiResponse = client.GetAsync(baseAddress + "api/meal").Result;
+            var apiResponse = client.GetAsync(baseAddress + "api/meal").Result;
 
             if (apiResponse.IsSuccessStatusCode)
             {
                 var JsonContent = apiResponse.Content.ReadAsStringAsync().Result;
-                //Token Message = JsonConvert.DeserializeObject<Token>(JsonContent);
-                Console.WriteLine("APIResponse : " + JsonContent.ToString());
-                //Console.WriteLine("APIResponse : " + Message.ToString());
+                dynamic json = JsonConvert.DeserializeObject(JsonContent);
+
+                int count = json.Count;
+
+                Console.WriteLine("\n\n");
+                Console.WriteLine($"{"     Meal ID",-20}" +
+                    $"{"Meal Name",-16}" +
+                    $"{"Total Carbs",15}");
+                Console.Write(new String(' ', 5));
+                Console.WriteLine(new String('-', 46));
+
+                for (int i = 0; i < count; i++)
+                {
+                    if (json[i].TotalCarbs < 10)
+                        Console.WriteLine(String.Format("     {0,-8} | {1,-25}   |  {2:F}",
+                           json[i].MealId, json[i].MealName, json[i].TotalCarbs));
+                    else
+                        Console.WriteLine(String.Format("     {0,-8} | {1,-25}   | {2:F}",
+                           json[i].MealId, json[i].MealName, json[i].TotalCarbs));
+                }
             }
             else
             {
@@ -37,20 +54,20 @@ namespace CarbTracker.ConsoleUI
 
         public void AddMeal(string accessToken, string baseAddress)
         {
-            client.DefaultRequestHeaders.Authorization = 
+            client.DefaultRequestHeaders.Authorization =
                    new AuthenticationHeaderValue("Bearer", accessToken);
-            
+
             var serializer = new JavaScriptSerializer();
             var payload = new MealType();
 
-            payload.MealName =  "another corndog";
+            payload.MealName = "another corndog";
             payload.TotalCarbs = 30;
 
             var serializedResult = serializer.Serialize(payload);
 
-            var apiResponse =   client.PostAsync(   baseAddress + "api/meal", 
-                                new StringContent(  serializedResult, 
-                                                    Encoding.UTF8,"application/json"))
+            var apiResponse = client.PostAsync(baseAddress + "api/meal",
+                                new StringContent(serializedResult,
+                                                    Encoding.UTF8, "application/json"))
                                                     .Result;
 
             //var whatSent = serializer.Deserialize<FoodType>(serializedResult);
