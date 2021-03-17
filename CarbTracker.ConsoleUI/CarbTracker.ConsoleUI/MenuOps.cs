@@ -96,11 +96,13 @@ namespace CarbTracker.ConsoleUI
                     ClickToCont();
                     break;
                 case 7:
-                    Console.WriteLine("not implemented yet");
+                    var updateMeal = new SyncAPIMeals();
+                    updateMeal.UpdateMeal(_atoken, _baseUrl);
                     ClickToCont();
                     break;
                 case 8:
-                    Console.WriteLine("not implemented yet");
+                    var delMeal = new SyncAPIMeals();
+                    delMeal.DeleteMeal(_atoken, _baseUrl);
                     ClickToCont();
                     break;
                 case 9:
