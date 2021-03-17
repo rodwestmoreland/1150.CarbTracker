@@ -118,27 +118,6 @@ namespace CarbTracker.Services
             }
         }
 
-        //public bool DeleteContent(string title)
-        //{
-        //    StreamingContent content = GetContentByTitle(title);
-        //    if (content == null)
-        //    {
-        //        return false;
-        //    }
-        //    int oldListCount = _content.Count;
-        //    _content.Remove(content);
-
-        //    return (oldListCount > _content.Count) ? true : false;
-        //}
-
-        //// Helper method *****
-
-
-
-
-
-
-
         public bool UpdateMeal(MealEdit model)
         {
             using(var context = new ApplicationDbContext())
