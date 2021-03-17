@@ -12,7 +12,6 @@ using System.Web.UI;
 
 namespace CarbTracker.ConsoleUI
 {
-
     public class SyncAPIMeals : HttpHandler
     {
         public void GetMeals(string accessToken, string baseAddress)
@@ -47,7 +46,7 @@ namespace CarbTracker.ConsoleUI
                            json[i].MealId, json[i].MealName, json[i].TotalCarbs));
                 }
 
-                Console.WriteLine("APIResponse : " + JsonContent.ToString());
+                //Console.WriteLine("APIResponse : " + JsonContent.ToString());
             }
             else
             {
@@ -65,8 +64,12 @@ namespace CarbTracker.ConsoleUI
             var serializer = new JavaScriptSerializer();
             var payload = new MealType();
 
-            payload.MealName = "corndog";
-            payload.TotalCarbs = 30;
+            Console.Write("Please enter the meal name: ");
+            payload.MealName = Console.ReadLine();
+
+            Console.Write("Please enter the number of carbs (whole number): ");
+            payload.TotalCarbs = Convert.ToInt32(Console.ReadLine());
+
 
             var serializedResult = serializer.Serialize(payload);
 
@@ -83,29 +86,23 @@ namespace CarbTracker.ConsoleUI
             {
                 Console.WriteLine("APIResponse, Error : " + apiResponse.StatusCode);
             }
-
         }
+
 
         public void UpdateMeal(string accessToken, string baseAddress)
         {
             client.DefaultRequestHeaders.Authorization =
                    new AuthenticationHeaderValue("Bearer", accessToken);
-
             var serializer = new JavaScriptSerializer();
             var payload = new MealType();
-
             payload.MealId = 11;
             payload.MealName = "yet another corndog";
             payload.TotalCarbs = 90;
-            
-
             var serializedResult = serializer.Serialize(payload);
-
             var apiResponse = client.PutAsync(baseAddress + "api/meal",
                                 new StringContent(serializedResult,
                                                     Encoding.UTF8, "application/json"))
                                                     .Result;
-
             if (apiResponse.IsSuccessStatusCode)
             {
                 Console.WriteLine("post = 200");
@@ -114,9 +111,7 @@ namespace CarbTracker.ConsoleUI
             {
                 Console.WriteLine("APIResponse, Error : " + apiResponse.StatusCode);
             }
-
         }
-
         public void GetByName(string accessToken, string baseAddress)
         {
             HttpClientHandler handler = new HttpClientHandler();
@@ -125,7 +120,6 @@ namespace CarbTracker.ConsoleUI
 
             Console.WriteLine("Enter meal name");
             string name = Console.ReadLine();
-
             var apiResponse = client.GetAsync(baseAddress + "api/meal/?name=" + name).Result;
 
             if (apiResponse.IsSuccessStatusCode)
@@ -142,12 +136,16 @@ namespace CarbTracker.ConsoleUI
 
         }
 
+    
         public void DeleteMeal(string accessToken, string baseAddress)
         {
             client.DefaultRequestHeaders.Authorization =
                    new AuthenticationHeaderValue("Bearer", accessToken);
 
-            var toDelete = 11;
+            GetMeals(accessToken, baseAddress);
+
+            Console.WriteLine("\n\nEnter the meal ID you wish to delete: ");
+            int toDelete = Convert.ToInt32(Console.ReadLine());
 
             var apiResponse = client.DeleteAsync(baseAddress + "api/meal/?meal="+toDelete).Result;
 
@@ -160,8 +158,6 @@ namespace CarbTracker.ConsoleUI
             {
                 Console.WriteLine("APIResponse, Error : " + apiResponse.StatusCode);
             }
-
-
 
         }
     }
