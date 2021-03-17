@@ -16,6 +16,7 @@ namespace CarbTracker.ConsoleUI
 
         public void Run()
         {
+            Console.Title = "Blood Sugar Carb Tracker";
             var userCheck = new SyncUserAccount();
             userCheck.UserCheck();
         } 

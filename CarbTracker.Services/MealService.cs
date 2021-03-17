@@ -116,7 +116,9 @@ namespace CarbTracker.Services
         {
             using(var context = new ApplicationDbContext())
             {
+
                 var entity = context.MealTables.Single(e => e.MealId == model.MealId);
+
 
                 entity.MealName = model.MealName;
                 entity.TotalCarbs = model.TotalCarbs;

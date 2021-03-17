@@ -69,6 +69,7 @@ namespace CarbTracker.ConsoleUI
 
             Console.Write("Please enter the number of carbs (whole number): ");
             payload.TotalCarbs = Convert.ToInt32(Console.ReadLine());
+            
 
 
             var serializedResult = serializer.Serialize(payload);
@@ -95,9 +96,14 @@ namespace CarbTracker.ConsoleUI
                    new AuthenticationHeaderValue("Bearer", accessToken);
             var serializer = new JavaScriptSerializer();
             var payload = new MealType();
-            payload.MealId = 11;
-            payload.MealName = "yet another corndog";
-            payload.TotalCarbs = 90;
+
+            Console.Write("enter id: ");
+            payload.MealId = Convert.ToInt32( Console.ReadLine());
+            Console.Write("enter new name: ");
+            payload.MealName = Console.ReadLine();
+            Console.Write("enter new carbs: ");
+            payload.TotalCarbs = Convert.ToInt32(Console.ReadLine());
+
             var serializedResult = serializer.Serialize(payload);
             var apiResponse = client.PutAsync(baseAddress + "api/meal",
                                 new StringContent(serializedResult,
