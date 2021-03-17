@@ -60,7 +60,7 @@ namespace CarbTracker.Services
                 BloodSugarTracker entity =
                     context
                         .BloodSugarTrackers
-                        .Single(e => e.BSLevelId == bsLevelId && e.Id == _userId);
+                        .Single(e => e.BSLevelId == bsLevelId);
 
                 context.BloodSugarTrackers.Remove(entity);
 
@@ -71,8 +71,7 @@ namespace CarbTracker.Services
         {
             using (var context = new ApplicationDbContext())
             {
-                var entity = context.BloodSugarTrackers.Single(e => e.BSLevelId == model.BSLevelId && e.Id == _userId) ;
-
+                var entity = context.BloodSugarTrackers.Single(e => e.BSLevelId == model.BSLevelId) ;
 
                 entity.BSLevel = model.BSLevel;
                 entity.CarbsConsumed = model.CarbsConsumed;
