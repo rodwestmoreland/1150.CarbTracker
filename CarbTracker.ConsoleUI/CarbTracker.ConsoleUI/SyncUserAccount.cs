@@ -22,10 +22,15 @@ namespace CarbTracker.ConsoleUI
                 newAccount.Email = userName;
                 newAccount.Password = password;
                 newAccount.ConfirmPassword = password;
-                newAccount.LastName = "doe";
-                newAccount.FirstName = "bill";
-                newAccount.InsulinToCarbRatio = 1.0;
-                newAccount.CorrectionFactor = 2.0;
+
+                Console.Write("Enter your last name: ");
+                newAccount.LastName = Console.ReadLine();
+                Console.Write("Enter your first name: ");
+                newAccount.FirstName = Console.ReadLine();
+                Console.Write("Enter your Insulin to Carb Ratio: ");
+                newAccount.InsulinToCarbRatio = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Enter your Correction factor: ");
+                newAccount.CorrectionFactor = Convert.ToDouble(Console.ReadLine());
 
                 client.Headers.Add("Content-Type:application/json");
                 client.Headers.Add("Accept:application/json");
