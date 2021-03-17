@@ -122,7 +122,7 @@ namespace CarbTracker.Services
         {
             using(var context = new ApplicationDbContext())
             {
-                var entity = context.MealTables.Single(e => e.MealId == model.MealId && e.Id == _userId);
+                var entity = context.MealTables.Single(e => e.MealId == model.MealId);// && e.Id == _userId);
 
                 entity.MealName = model.MealName;
                 entity.TotalCarbs = model.TotalCarbs;
