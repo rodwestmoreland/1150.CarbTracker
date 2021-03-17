@@ -54,6 +54,8 @@ namespace CarbTracker.ConsoleUI
             }
         }
 
+        
+
         public void AddMeal(string accessToken, string baseAddress)
         {
             client.DefaultRequestHeaders.Authorization =
@@ -67,6 +69,7 @@ namespace CarbTracker.ConsoleUI
 
             Console.Write("Please enter the number of carbs (whole number): ");
             payload.TotalCarbs = Convert.ToInt32(Console.ReadLine());
+
 
             var serializedResult = serializer.Serialize(payload);
 
@@ -114,9 +117,11 @@ namespace CarbTracker.ConsoleUI
             HttpClientHandler handler = new HttpClientHandler();
             HttpClient client = new HttpClient(handler);
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
             Console.WriteLine("Enter meal name");
             string name = Console.ReadLine();
             var apiResponse = client.GetAsync(baseAddress + "api/meal/?name=" + name).Result;
+
             if (apiResponse.IsSuccessStatusCode)
             {
                 var JsonContent = apiResponse.Content.ReadAsStringAsync().Result;
@@ -128,6 +133,7 @@ namespace CarbTracker.ConsoleUI
             {
                 Console.WriteLine("APIResponse, Error : " + apiResponse.StatusCode);
             }
+
         }
 
     

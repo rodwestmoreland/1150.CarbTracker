@@ -40,6 +40,7 @@ namespace CarbTracker.ConsoleUI
             menuOptions.Add("Add a new meal item\n"); // connected
             menuOptions.Add("Modify a meal item\n"); // connected
             menuOptions.Add("Delete a meal item\n"); // connected
+            menuOptions.Add("Get meal by name\n");
             menuOptions.Add("Exit application\n"); // connected
 
             bool continueToRun = true;
@@ -107,7 +108,8 @@ namespace CarbTracker.ConsoleUI
                     ClickToCont();
                     break;
                 case 9:
-                    Console.WriteLine("not implemented yet");
+                    var findMeal = new SyncAPIMeals();
+                    findMeal.GetByName(_atoken, _baseUrl);
                     ClickToCont();
                     break;
                 case 10:
