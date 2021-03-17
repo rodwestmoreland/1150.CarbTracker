@@ -73,11 +73,8 @@ namespace CarbTracker.ConsoleUI
                                                     Encoding.UTF8,"application/json"))
                                                     .Result;
 
-            //var whatSent = serializer.Deserialize<FoodType>(serializedResult);
-
             if (apiResponse.IsSuccessStatusCode)
             {
-                //var JsonContent = apiResponse.Content.ReadAsStringAsync().Result;
                 Console.WriteLine("post = 200");
             }
             else

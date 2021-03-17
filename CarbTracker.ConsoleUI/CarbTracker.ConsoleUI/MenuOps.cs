@@ -32,15 +32,15 @@ namespace CarbTracker.ConsoleUI
         
         public static void MenuSelections()
         {
-            menuOptions.Add("Enter Blood Sugar Information\n");
+            menuOptions.Add("Enter Blood Sugar Information\n"); // connected
             menuOptions.Add("Find total carbs in meal\n");
-            menuOptions.Add("See all foods in database\n");
-            menuOptions.Add("See all meals in database\n");
-            menuOptions.Add("Add a new food item\n");
-            menuOptions.Add("Add a new meal item\n");
-            menuOptions.Add("Modify a meal item\n");
-            menuOptions.Add("Delete a meal item\n");
-            menuOptions.Add("Exit application\n");
+            menuOptions.Add("See all foods in database\n"); // connected
+            menuOptions.Add("See all meals in database\n"); // connected
+            menuOptions.Add("Add a new food item\n"); // connected
+            menuOptions.Add("Add a new meal item\n"); // connected
+            menuOptions.Add("Modify a meal item\n"); // connected
+            menuOptions.Add("Delete a meal item\n"); // connected
+            menuOptions.Add("Exit application\n"); // connected
 
             bool continueToRun = true;
             while (continueToRun)
@@ -67,7 +67,8 @@ namespace CarbTracker.ConsoleUI
             switch (selection)
             {
                 case 1:
-                    Console.WriteLine("not implemented yet");
+                    var addBS = new SyncAPIBSTracker();
+                    addBS.AddBS(_atoken, _baseUrl);
                     ClickToCont();
                     break;
                 case 2:
@@ -96,11 +97,13 @@ namespace CarbTracker.ConsoleUI
                     ClickToCont();
                     break;
                 case 7:
-                    Console.WriteLine("not implemented yet");
+                    var updateMeal = new SyncAPIMeals();
+                    updateMeal.UpdateMeal(_atoken, _baseUrl);
                     ClickToCont();
                     break;
                 case 8:
-                    Console.WriteLine("not implemented yet");
+                    var delMeal = new SyncAPIMeals();
+                    delMeal.DeleteMeal(_atoken, _baseUrl);
                     ClickToCont();
                     break;
                 case 9:

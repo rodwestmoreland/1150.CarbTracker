@@ -1,52 +1,26 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
-using System.Web.UI;
 
 namespace CarbTracker.ConsoleUI
 {
-
-    public class SyncAPIMeals : HttpHandler
+    class SyncAPIBSTracker:HttpHandler
     {
-        public void GetMeals(string accessToken, string baseAddress)
+        public void GetBS(string accessToken, string baseAddress)
         {
             client.DefaultRequestHeaders.Authorization =
                    new AuthenticationHeaderValue("Bearer", accessToken);
 
-            var apiResponse = client.GetAsync(baseAddress + "api/meal").Result;
+            var apiResponse = client.GetAsync(baseAddress + "api/BloodSugarTracker").Result;
 
             if (apiResponse.IsSuccessStatusCode)
             {
                 var JsonContent = apiResponse.Content.ReadAsStringAsync().Result;
-
-                dynamic json = JsonConvert.DeserializeObject(JsonContent);
-
-                int count = json.Count;
-
-                Console.WriteLine("\n\n");
-                Console.WriteLine($"{"     Meal ID",-20}" +
-                    $"{"Meal Name",-16}" +
-                    $"{"Total Carbs",15}");
-                Console.Write(new String(' ', 5));
-                Console.WriteLine(new String('-', 46));
-
-                for (int i = 0; i < count; i++)
-                {
-                    if (json[i].TotalCarbs < 10)
-                        Console.WriteLine(String.Format("     {0,-8} | {1,-25}   |  {2:F}",
-                           json[i].MealId, json[i].MealName, json[i].TotalCarbs));
-                    else
-                        Console.WriteLine(String.Format("     {0,-8} | {1,-25}   | {2:F}",
-                           json[i].MealId, json[i].MealName, json[i].TotalCarbs));
-                }
-
                 Console.WriteLine("APIResponse : " + JsonContent.ToString());
             }
             else
@@ -55,20 +29,20 @@ namespace CarbTracker.ConsoleUI
             }
         }
 
-        public void AddMeal(string accessToken, string baseAddress)
+        public void AddBS(string accessToken, string baseAddress)
         {
             client.DefaultRequestHeaders.Authorization =
                    new AuthenticationHeaderValue("Bearer", accessToken);
 
             var serializer = new JavaScriptSerializer();
-            var payload = new MealType();
+            var payload = new BSType();
 
-            payload.MealName = "another corndog";
-            payload.TotalCarbs = 30;
+            payload.BSLevel = 100;
+            payload.CarbsConsumed = 130;
 
             var serializedResult = serializer.Serialize(payload);
 
-            var apiResponse = client.PostAsync(baseAddress + "api/meal",
+            var apiResponse = client.PostAsync(baseAddress + "api/BloodSugarTracker",
                                 new StringContent(serializedResult,
                                                     Encoding.UTF8, "application/json"))
                                                     .Result;
@@ -84,22 +58,21 @@ namespace CarbTracker.ConsoleUI
 
         }
 
-        public void UpdateMeal(string accessToken, string baseAddress)
+        public void UpdateBS(string accessToken, string baseAddress)
         {
             client.DefaultRequestHeaders.Authorization =
                    new AuthenticationHeaderValue("Bearer", accessToken);
 
             var serializer = new JavaScriptSerializer();
-            var payload = new MealType();
+            var payload = new BSType();
 
-            payload.MealId = 11;
-            payload.MealName = "yet another corndog";
-            payload.TotalCarbs = 90;
-            
+            payload.BSLevel = 110;
+            payload.CarbsConsumed = 220;
+           
 
             var serializedResult = serializer.Serialize(payload);
 
-            var apiResponse = client.PutAsync(baseAddress + "api/meal",
+            var apiResponse = client.PutAsync(baseAddress + "api/BloodSugarTracker",
                                 new StringContent(serializedResult,
                                                     Encoding.UTF8, "application/json"))
                                                     .Result;
@@ -114,14 +87,14 @@ namespace CarbTracker.ConsoleUI
             }
 
         }
-        public void DeleteMeal(string accessToken, string baseAddress)
+        public void DeleteBS(string accessToken, string baseAddress)
         {
             client.DefaultRequestHeaders.Authorization =
                    new AuthenticationHeaderValue("Bearer", accessToken);
 
             var toDelete = 11;
 
-            var apiResponse = client.DeleteAsync(baseAddress + "api/meal/?meal="+toDelete).Result;
+            var apiResponse = client.DeleteAsync(baseAddress + "api/BloodSugarTracker/?BsLevelID=" + toDelete).Result;
 
             if (apiResponse.IsSuccessStatusCode)
             {
@@ -132,8 +105,6 @@ namespace CarbTracker.ConsoleUI
             {
                 Console.WriteLine("APIResponse, Error : " + apiResponse.StatusCode);
             }
-
-
 
         }
     }

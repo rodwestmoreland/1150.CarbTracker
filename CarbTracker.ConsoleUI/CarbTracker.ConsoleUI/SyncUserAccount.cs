@@ -29,7 +29,11 @@ namespace CarbTracker.ConsoleUI
 
                 client.Headers.Add("Content-Type:application/json");
                 client.Headers.Add("Accept:application/json");
-                var result = client.UploadString(baseUrl + "api/account/register",
+
+             
+
+                var result =    client.UploadString(baseUrl+"api/account/register",
+
                                 JsonConvert.SerializeObject(newAccount));
 
                 Console.WriteLine(result);
@@ -41,6 +45,7 @@ namespace CarbTracker.ConsoleUI
             Token token = null;
 
             Console.Write("Do you want to register as a first time user? y/n ");
+
             string userInput = Console.ReadLine().ToLower();
 
             // Consolidated code from here . . .
@@ -53,10 +58,12 @@ namespace CarbTracker.ConsoleUI
 
             if (userInput == "y") RegisterAccount(baseUrl, Username, Password);
             // . . . to here.
+
             token = Token.GetAccessToken(baseUrl, Username, Password);
 
             if (!string.IsNullOrEmpty(token.AccessToken))
             {
+                Console.WriteLine($"{Username} logged in...\n\n");
                 var ops = new MenuOps(token.AccessToken, baseUrl);
                 ops.AToken = token.AccessToken;
                 ops.BaseUrl = baseUrl;
@@ -69,7 +76,7 @@ namespace CarbTracker.ConsoleUI
             Console.WriteLine("nothing happened");
 
             Console.ReadLine();
-            //}
+
         }
 
         public void DisplayPrompt()
