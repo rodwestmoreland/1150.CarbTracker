@@ -32,8 +32,12 @@ namespace CarbTracker.Data
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+
     {
-        public ApplicationDbContext(): base("DefaultConnection", throwIfV1Schema: false){}
+        public ApplicationDbContext(): base("DefaultConnection", throwIfV1Schema: false){
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
+        }
         
         public DbSet<BloodSugarTracker> BloodSugarTrackers  { get; set; }
         public DbSet<FoodMeal>          FoodMeals           { get; set; }
