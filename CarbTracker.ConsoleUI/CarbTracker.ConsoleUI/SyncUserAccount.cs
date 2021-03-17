@@ -29,9 +29,13 @@ namespace CarbTracker.ConsoleUI
 
                 client.Headers.Add("Content-Type:application/json");
                 client.Headers.Add("Accept:application/json");
+
+             
+
                 var result =    client.UploadString(baseUrl+"api/account/register",
+
                                 JsonConvert.SerializeObject(newAccount));
-              
+
                 Console.WriteLine(result);
             }
         }
@@ -41,26 +45,19 @@ namespace CarbTracker.ConsoleUI
             Token token = null;
 
             Console.Write("Do you want to register as a first time user? y/n ");
-            string userInput = Console.ReadLine();
-            if(userInput == "y")
-            {
-                Console.Write("Enter email address: ");
-                Username = Console.ReadLine();
-                Console.Write("Enter a password (10 characters, upper, lower and special character \n");
-                Password = Console.ReadLine();
 
-                RegisterAccount(baseUrl, Username, Password);
-                Console.Clear();
-            }
-            else
-            {
-                Console.WriteLine("Welcome. Please log in");
-                Console.Write("Enter email address: ");
-                Username = Console.ReadLine();
-                Console.Write("Enter a password (10 characters, upper, lower and special character \n");
-                Password = Console.ReadLine();
-                Console.Clear();
-            }
+            string userInput = Console.ReadLine().ToLower();
+
+            // Consolidated code from here . . .
+            if (userInput == "y") Console.WriteLine("Welcome. Please log in");
+            
+            Console.Write("Enter email address: ");
+            Username = Console.ReadLine();
+            DisplayPrompt();
+            Password = Console.ReadLine();
+
+            if (userInput == "y") RegisterAccount(baseUrl, Username, Password);
+            // . . . to here.
 
             token = Token.GetAccessToken(baseUrl, Username, Password);
 
@@ -79,6 +76,12 @@ namespace CarbTracker.ConsoleUI
             Console.WriteLine("nothing happened");
 
             Console.ReadLine();
+
+        }
+
+        public void DisplayPrompt()
+        {
+            Console.Write("Enter a password (10 characters, upper, lower and special character): ");
         }
     }
 }
