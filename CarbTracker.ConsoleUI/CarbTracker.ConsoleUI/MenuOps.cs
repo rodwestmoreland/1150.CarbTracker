@@ -76,7 +76,7 @@ namespace CarbTracker.ConsoleUI
                     ClickToCont();
                     break;
 
-                case 3:
+                case 3: // This is done
                     var getFoods = new SyncAPIFoods();
                     getFoods.GetFoods(_atoken, _baseUrl);
                     ClickToCont();
@@ -91,7 +91,7 @@ namespace CarbTracker.ConsoleUI
                     addFoods.AddFood(_atoken, _baseUrl);
                     ClickToCont();
                     break;
-                case 6:
+                case 6: // This is done
                     var addMeal = new SyncAPIMeals();
                     addMeal.AddMeal(_atoken, _baseUrl);
                     ClickToCont();

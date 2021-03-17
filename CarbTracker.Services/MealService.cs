@@ -77,10 +77,15 @@ namespace CarbTracker.Services
         {
             using (var context = new ApplicationDbContext())
             {
+                //MealTable entity =
+                //    context
+                //        .MealTables
+                //        .Single(e => e.MealId == mealId && e.Id == _userId);
+
                 MealTable entity =
                     context
                         .MealTables
-                        .Single(e => e.MealId == mealId && e.Id == _userId);
+                        .Single(e => e.MealId == mealId);
 
                 context.MealTables.Remove(entity);
                 
