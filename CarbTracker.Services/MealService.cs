@@ -19,26 +19,7 @@ namespace CarbTracker.Services
         public IEnumerable<MealTableListItem> GetMeal()
 
         {
-            using (var context = new ApplicationDbContext())
-            {
-                //    List<MealTable> seedMeals = new List<MealTable>();
-                //    seedMeals.Add(new MealTable("Cheese Sandwich", 45));
-                //    seedMeals.Add(new MealTable("Omlet", 32));
-                //    foreach (var meals in seedMeals)
-                //{
-                //    context.MealTables.Add(meals);
-                //    context.SaveChanges();
-                //}
-
-
-                //var tieFoodToMeal = (from t in context.FoodMeals
-                //                     join f in context.Foods      on t.FoodId equals f.FoodId
-                //                     join m in context.MealTables on t.MealId equals m.MealId
-                //                     select new );
-            }
-
-        
-
+            
             using (var context = new ApplicationDbContext())
             {
                 if (context.MealTables.Count() < 2)
@@ -115,7 +96,7 @@ namespace CarbTracker.Services
                 MealTable entity =
                     context
                         .MealTables
-                        .Single(e => e.MealName == mealName && e.Id == _userId);
+                        .SingleOrDefault(e => e.MealName == mealName && e.Id == _userId);
 
                 context.MealTables.Remove(entity);
 

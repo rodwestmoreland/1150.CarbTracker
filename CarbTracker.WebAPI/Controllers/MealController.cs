@@ -52,26 +52,7 @@ namespace CarbTracker.WebAPI.Controllers
             return Ok();
         }
 
-        //public IHttpActionResult DeleteMealById(int mealId)
-        //{
-        //    var service = CreateMealService();
-
-        //    if (!service.DeleteMealId(mealId))
-        //        return InternalServerError();
-
-        //    return Ok();
-        //}
-
-        //public IHttpActionResult DeleteMealByName(string mealName)
-        //{
-        //    var service = CreateMealService();
-
-        //    if (!service.DeleteMealName(mealName))
-        //        return InternalServerError();
-
-        //    return Ok();
-        //}
-
+       
         public IHttpActionResult Put (MealEdit meal)
         {
             if (!ModelState.IsValid)

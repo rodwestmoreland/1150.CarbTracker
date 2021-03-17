@@ -29,7 +29,7 @@ namespace CarbTracker.ConsoleUI
 
                 client.Headers.Add("Content-Type:application/json");
                 client.Headers.Add("Accept:application/json");
-                var result =    client.UploadString(baseUrl+"/api/account/register",
+                var result =    client.UploadString(baseUrl+"api/account/register",
                                 JsonConvert.SerializeObject(newAccount));
               
                 Console.WriteLine(result);
@@ -50,6 +50,7 @@ namespace CarbTracker.ConsoleUI
                 Password = Console.ReadLine();
 
                 RegisterAccount(baseUrl, Username, Password);
+                Console.Clear();
             }
             else
             {
@@ -58,15 +59,14 @@ namespace CarbTracker.ConsoleUI
                 Username = Console.ReadLine();
                 Console.Write("Enter a password (10 characters, upper, lower and special character \n");
                 Password = Console.ReadLine();
+                Console.Clear();
             }
-
-
-
 
             token = Token.GetAccessToken(baseUrl, Username, Password);
 
             if (!string.IsNullOrEmpty(token.AccessToken))
             {
+                Console.WriteLine($"{Username} logged in...\n\n");
                 var ops = new MenuOps(token.AccessToken, baseUrl);
                 ops.AToken = token.AccessToken;
                 ops.BaseUrl = baseUrl;
@@ -79,7 +79,6 @@ namespace CarbTracker.ConsoleUI
             Console.WriteLine("nothing happened");
 
             Console.ReadLine();
-        //}
-    }
+        }
     }
 }
