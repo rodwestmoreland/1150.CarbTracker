@@ -44,6 +44,7 @@ namespace CarbTracker.Services
                     }
 
                 }
+
                 var query = context.Foods
                                 .Select(e => new FoodListItem
                                 {
