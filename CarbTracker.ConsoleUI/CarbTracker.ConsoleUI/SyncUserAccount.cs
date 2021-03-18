@@ -45,7 +45,6 @@ namespace CarbTracker.ConsoleUI
 
                 } while (numCheck);
 
-                
                 do
                 {
                     Console.Write("Enter your Correction factor: ");
@@ -121,11 +120,15 @@ namespace CarbTracker.ConsoleUI
             }
             else
             {
+                Console.WriteLine();
                 Console.WriteLine(token.Error);
+                Console.WriteLine("\nThere was a problem with your username or password. Try again.");
+                Console.WriteLine("\nPress any key to continue");
+                Console.ReadKey();
             }
-            Console.WriteLine("nothing happened");
+            Console.Clear();
 
-            Console.ReadLine();
+            UserCheck();
 
         }
 
