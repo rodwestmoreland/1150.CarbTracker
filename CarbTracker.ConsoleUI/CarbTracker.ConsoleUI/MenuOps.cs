@@ -46,14 +46,14 @@ namespace CarbTracker.ConsoleUI
             bool continueToRun = true;
             while (continueToRun)
             {
-                Console.WriteLine("Blood Sugar Tracker \nSelect option below:\n\n");
+                Console.WriteLine("Blood Sugar Tracker \nSelect option below:\n");
                 int i = 1;
                 foreach (var option in menuOptions)
                 {
                     Console.WriteLine($"{i}. {option}");
                     i++;
                 }
-                        
+                Console.Write("Selection > ");        
                 string menuSelect = (Console.ReadLine());
                 MenuSelectionCheck(menuSelect);
             }// \while
