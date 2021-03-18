@@ -21,7 +21,7 @@ namespace CarbTracker.ConsoleUI
             client.DefaultRequestHeaders.Authorization =
                    new AuthenticationHeaderValue("Bearer", accessToken);
 
-            var apiResponse = client.GetAsync(baseAddress + "api/food").Result;
+            var apiResponse = client.GetAsync(baseAddress + "api/food").Result; 
 
             if (apiResponse.IsSuccessStatusCode)
             {

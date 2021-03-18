@@ -11,4 +11,9 @@ namespace CarbTracker.ConsoleUI
         public int BSLevel { get; set; }
         public int CarbsConsumed { get; set; }
     }
+    public class SettingsType
+    {
+        public double InsulinToCarbRatio { get; set; }
+        public double CorrectionFactor { get; set; }
+    }
 }

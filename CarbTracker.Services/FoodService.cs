@@ -43,7 +43,6 @@ namespace CarbTracker.Services
                         context.SaveChanges();
                     }
 
-                //}
                 var query = context.Foods
                                 .Select(e => new FoodListItem
                                 {
