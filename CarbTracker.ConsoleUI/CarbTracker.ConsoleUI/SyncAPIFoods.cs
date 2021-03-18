@@ -28,7 +28,7 @@ namespace CarbTracker.ConsoleUI
                 var JsonContent = apiResponse.Content.ReadAsStringAsync().Result;
                 dynamic json = JsonConvert.DeserializeObject(JsonContent);
                 int count = json.Count;
-
+                Console.WriteLine($"There are {count} food items in the table.");
                 Console.WriteLine("\n\n");
                 Console.WriteLine($"{"     Food",-25}" +
                     $"{"Serving In Ounces",-20}" +
@@ -53,7 +53,7 @@ namespace CarbTracker.ConsoleUI
             var serializer = new JavaScriptSerializer();
             var payload = new FoodType();
 
-            Console.Write("\nEnter the name of the meal: ");
+            Console.Write("\nEnter the name of the food: ");
             payload.Name = Console.ReadLine();
 
             Console.Write("\nEnter the number of carbohydrates: ");

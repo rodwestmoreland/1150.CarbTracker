@@ -17,8 +17,8 @@ namespace CarbTracker.Services
             using (var context = new ApplicationDbContext())
             {
 
-                //if (context.Foods.Count() < 2)
-                //{
+                if (context.Foods.Count() < 2)
+                {
                     // Warning - reseed regardless of current content !!!
                     context.Database.ExecuteSqlCommand("DELETE FROM dbo.Food"); // DELETE ALL ROWS! 
                     context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('dbo.Food', RESEED, 0)"); // Reseed index
@@ -42,6 +42,8 @@ namespace CarbTracker.Services
                         context.Foods.Add(food);
                         context.SaveChanges();
                     }
+
+                }
 
                 var query = context.Foods
                                 .Select(e => new FoodListItem

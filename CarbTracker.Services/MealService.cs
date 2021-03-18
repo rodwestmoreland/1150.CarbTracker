@@ -17,9 +17,7 @@ namespace CarbTracker.Services
         }
 
         public IEnumerable<MealTableListItem> GetMeal()
-
         {
-            
             using (var context = new ApplicationDbContext())
             {
                 if (context.MealTables.Count() < 2)
@@ -52,13 +50,11 @@ namespace CarbTracker.Services
                             );
 
                 return query.ToArray();
-
             }
         }
 
         public bool CreateMeal(MealTableCreate model)
         {
-
             var entity = new MealTable()
             {
                 MealName = model.MealName,
@@ -77,14 +73,18 @@ namespace CarbTracker.Services
         {
             using (var context = new ApplicationDbContext())
             {
+                //MealTable entity =
+                //    context
+                //        .MealTables
+                //        .Single(e => e.MealId == mealId && e.Id == _userId);
+
                 MealTable entity =
                     context
                         .MealTables
-                        .Single(e => e.MealId == mealId && e.Id == _userId);
+                        .Single(e => e.MealId == mealId);
 
                 context.MealTables.Remove(entity);
-                
-
+               
                 return context.SaveChanges() == 1;
             }
         }
@@ -96,12 +96,19 @@ namespace CarbTracker.Services
                 MealTable entity =
                     context
                         .MealTables
-                        .SingleOrDefault(e => e.MealName == mealName && e.Id == _userId);
+                        .SingleOrDefault(e => e.MealName == mealName);
 
                 context.MealTables.Remove(entity);
 
-
                 return context.SaveChanges() == 1;
+            }
+        }
+
+        public MealTable GetByTitle(string name)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                return context.MealTables.SingleOrDefault(x => x.MealName == name);
             }
         }
 
@@ -109,7 +116,9 @@ namespace CarbTracker.Services
         {
             using(var context = new ApplicationDbContext())
             {
-                var entity = context.MealTables.Single(e => e.MealId == model.MealId && e.Id == _userId);
+
+                var entity = context.MealTables.Single(e => e.MealId == model.MealId);
+
 
                 entity.MealName = model.MealName;
                 entity.TotalCarbs = model.TotalCarbs;

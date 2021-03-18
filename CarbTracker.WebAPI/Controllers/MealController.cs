@@ -20,6 +20,13 @@ namespace CarbTracker.WebAPI.Controllers
             return Ok(meals);
         }
 
+        public IHttpActionResult GetByName(string name)
+        {
+            MealService mealService = CreateMealService();
+            var meals = mealService.GetByTitle(name);
+            return Ok(meals);
+        }
+
         public IHttpActionResult Post(MealTableCreate meal)
         {
             if (!ModelState.IsValid)

@@ -40,19 +40,20 @@ namespace CarbTracker.ConsoleUI
             menuOptions.Add("Add a new meal item\n"); // connected
             menuOptions.Add("Modify a meal item\n"); // connected
             menuOptions.Add("Delete a meal item\n"); // connected
+            menuOptions.Add("Get meal by name\n");
             menuOptions.Add("Exit application\n"); // connected
 
             bool continueToRun = true;
             while (continueToRun)
             {
-                Console.WriteLine("Blood Sugar Tracker \nSelect option below:\n\n");
+                Console.WriteLine("Blood Sugar Tracker \nSelect option below:\n");
                 int i = 1;
                 foreach (var option in menuOptions)
                 {
                     Console.WriteLine($"{i}. {option}");
                     i++;
                 }
-                        
+                Console.Write("Selection > ");        
                 string menuSelect = (Console.ReadLine());
                 MenuSelectionCheck(menuSelect);
             }// \while
@@ -76,7 +77,7 @@ namespace CarbTracker.ConsoleUI
                     ClickToCont();
                     break;
 
-                case 3:
+                case 3: // This is done
                     var getFoods = new SyncAPIFoods();
                     getFoods.GetFoods(_atoken, _baseUrl);
                     ClickToCont();
@@ -91,7 +92,7 @@ namespace CarbTracker.ConsoleUI
                     addFoods.AddFood(_atoken, _baseUrl);
                     ClickToCont();
                     break;
-                case 6:
+                case 6: // This is done
                     var addMeal = new SyncAPIMeals();
                     addMeal.AddMeal(_atoken, _baseUrl);
                     ClickToCont();
@@ -107,7 +108,8 @@ namespace CarbTracker.ConsoleUI
                     ClickToCont();
                     break;
                 case 9:
-                    Console.WriteLine("not implemented yet");
+                    var findMeal = new SyncAPIMeals();
+                    findMeal.GetByName(_atoken, _baseUrl);
                     ClickToCont();
                     break;
                 case 10:

@@ -49,6 +49,8 @@ namespace CarbTracker.ConsoleUI
 
             var serializer = new JavaScriptSerializer();
             var payload = new BSType();
+            string verifyInput;
+            bool numCheck = true;
 
             //InsulinToCarbRatio
             //Correction Factor
@@ -115,6 +117,7 @@ namespace CarbTracker.ConsoleUI
             else
             {
                 Console.WriteLine("API/Settings - APIResponsError : " + settingsApiResponse.StatusCode);
+
             }
 
         }
