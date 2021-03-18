@@ -49,11 +49,7 @@ namespace CarbTracker.ConsoleUI
 
             var serializer = new JavaScriptSerializer();
             var payload = new BSType();
-            string verifyInput;
-            bool numCheck = true;
-
-            //InsulinToCarbRatio
-            //Correction Factor
+            
             var settingsApiResponse = client.GetAsync(baseAddress + "api/settings").Result;
 
             if (settingsApiResponse.IsSuccessStatusCode)
@@ -63,8 +59,6 @@ namespace CarbTracker.ConsoleUI
 
                 var insulinToCarbRatio = Convert.ToDouble(json.InsulinToCarbRatio);
                 var correctionFactor = Convert.ToDouble(json.CorrectionFactor);
-
-
 
                 Console.WriteLine($"Insulin to carb ratio: {insulinToCarbRatio}\n" +
                     $"Corrective Factor: {correctionFactor}" +
@@ -84,7 +78,7 @@ namespace CarbTracker.ConsoleUI
                 double insulinForMeal = 0.0;
                 if (apiResponse.IsSuccessStatusCode)
                 {
-                    double insulinForCarbs = payload.CarbsConsumed / insulinToCarbRatio;
+                    double insulinForCarbs = Math.Round(payload.CarbsConsumed / insulinToCarbRatio);
                     if (payload.BSLevel <= 90)
                     {
                         rtn = "Blood Sugar is low, consume glucose to raise to appropriate range.\n";
@@ -95,7 +89,7 @@ namespace CarbTracker.ConsoleUI
                     }
                     else
                     {
-                        insulinForMeal = (payload.BSLevel - 120) / insulinToCarbRatio;
+                        insulinForMeal = Math.Round((payload.BSLevel - 120) / insulinToCarbRatio);
                         rtn = $"Blood Sugar is high. Take {insulinForMeal} units for Corrective Dose\n";
                     }
 
@@ -112,12 +106,13 @@ namespace CarbTracker.ConsoleUI
                 else
                 {
                     Console.WriteLine("APIResponse, Error : " + apiResponse.StatusCode);
+                    Console.WriteLine("Please check your information and try again.");
                 }
             }
             else
             {
                 Console.WriteLine("API/Settings - APIResponsError : " + settingsApiResponse.StatusCode);
-
+                Console.WriteLine("Please check your information and try again.");
             }
 
         }
