@@ -36,9 +36,42 @@ namespace CarbTracker.ConsoleUI
 
             var serializer = new JavaScriptSerializer();
             var payload = new BSType();
+            string verifyInput;
+            bool numCheck = true;
 
-            payload.BSLevel = 100;
-            payload.CarbsConsumed = 130;
+            do
+            {
+                Console.Write("Enter your Blood Sugar Level: ");
+                verifyInput = Console.ReadLine();
+                if (int.TryParse(verifyInput, out int userInput))
+                {
+                    payload.BSLevel = userInput;
+                    numCheck = false;
+                }
+                else
+                {
+                    Console.WriteLine("ERROR: Needs to be a number.\n\n");
+                    numCheck = true;
+                }
+
+            } while (numCheck);
+
+            do
+            {
+                Console.Write("Enter your Carbs Consumed: ");
+                verifyInput = Console.ReadLine();
+                if (int.TryParse(verifyInput, out int userInput))
+                {
+                    payload.CarbsConsumed = userInput;
+                    numCheck = false;
+                }
+                else
+                {
+                    Console.WriteLine("ERROR: Needs to be a number.\n\n");
+                    numCheck = true;
+                }
+
+            } while (numCheck);
 
             var serializedResult = serializer.Serialize(payload);
 
@@ -49,11 +82,12 @@ namespace CarbTracker.ConsoleUI
 
             if (apiResponse.IsSuccessStatusCode)
             {
-                Console.WriteLine("post = 200");
+                Console.WriteLine("Blood Sugar Level recorded.");
             }
             else
             {
                 Console.WriteLine("APIResponse, Error : " + apiResponse.StatusCode);
+                Console.WriteLine("\nThere was some issue with the input. Try again.");
             }
 
         }
