@@ -11,7 +11,7 @@ To run out project, you’ll need to start the API by opening CarbTracker.sln an
 
 The first option is to create a new user or enter the email and password for a current user. This information is validated so the program won’t crash.
 
-Next, you’ll see a 10 item menu which is self-explanatory. The two choices which list the food and meals needed a way to translate the data in the tables to a JSON file, making it easier to display the data. Here’s a link to stackoverflow which explain the translation: https://stackoverflow.com/questions/39723128/converting-a-string-to-json-in-c-sharp
+Next, you’ll see a 10 item menu which is self-explanatory. The two choices which list the food and meals needed a way to translate the data in the tables to a JSON file, making it easier to display the data. Here’s a link to stackoverflow which explains the translation: https://stackoverflow.com/questions/39723128/converting-a-string-to-json-in-c-sharp
 
 Let us know if you need anything more.
 
